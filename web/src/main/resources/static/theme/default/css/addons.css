@@ -1,0 +1,117 @@
+/*box list*/
+.shadow-box {
+    background-color: #fff;
+    margin-bottom: 14px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0px 1px 1px rgba(209, 212, 221, 0.15);
+    border-radius: 0;
+}
+.filter {
+    border-bottom: 1px solid #ebebeb;
+    height: 50px;
+    background-color: #fff;
+}
+
+.stream-list {
+    background-color: #f1f1f1;
+}
+.p-rank {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.stream-item .summary {
+    overflow: hidden;
+    padding-top: 10px;
+    font-size: 14px;
+}
+.p-stream .stream-item {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+    background-color: #FFF;
+}
+.p-rank {
+    margin-bottom: 15px;
+}
+.p-rank .users .ava {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+.img-circle {
+    transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    border-radius: 50%;
+}
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+.p-rank .users .info {
+    float: left;
+    padding-left: 12px;
+}
+.article-title .h2-title{
+    font-size: 18px;
+    font-weight:bold;
+    display: inline;
+    vertical-align: -2px;
+    margin-left: 10px;
+    color: #009688;
+}
+
+.article-title :hover{
+    color:#38b7ea;
+}
+.summary a:hover {
+    color:#333;
+}
+.ul-filter{
+    padding-top: 10px;
+    padding-left:13px;
+}
+
+/* Right-------------------------------------------------- */
+.side-right ul.list {
+    margin: 0;
+    padding-left: 2px;
+}
+
+.side-right ul.list li {
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 12px;
+    background-color: #ebebeb;
+    border: 1px solid #fff;
+    padding-left: 3px;
+    color:#303030;
+}
+
+.side-right ul.list a:hover {
+    color:#38b7ea;
+}
+.list-body{
+    padding: 10px;
+}
+
+/*head*/
+.headroom {
+    background-color:#393D49!important;
+}
+.site-header .navbar-nav > li > a{
+    color: #ffffff;
+}
+
+
