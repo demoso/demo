@@ -109,9 +109,70 @@ img {
 /*head*/
 .headroom {
     background-color:#393D49!important;
+    /*background-color:#009a61!important;*/
 }
 .site-header .navbar-nav > li > a{
     color: #ffffff;
+}
+.site-header .navbar-button > li a.plus {
+    display: inline-block;
+    padding: 7px 10px;
+    margin: 10px 0 10px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: aliceblue;
+}
+.site-header .navbar-button > li > a.user {
+    padding: 10px 10px;
+    line-height: 30px;
+    position: relative;
+    display: block;
+    color: aliceblue;
+}
+
+/*index page*/
+.contact-box {
+    background-color: #ffffff;
+    height: 88px;
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 15px;
+}
+
+.user-nav .list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.rowattr h2.padding {
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-indent: 8px;
+}
+
+.contact-box .imgattr {
+    width: 40px;
+    height: 36px;
+    float: left;
+}
+.contact-box .imgattr .img-circle {
+    border-radius: 50%;
+    transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+h3.padding {
+    font-size: 17px;
+    text-align: left;
+    text-indent: 1px;
+    padding-top: 4px;
 }
 
 
