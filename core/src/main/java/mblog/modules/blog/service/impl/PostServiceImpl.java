@@ -241,6 +241,8 @@ public class PostServiceImpl implements PostService {
 
 		po.setCreated(new Date());
 		po.setStatus(EntityStatus.ENABLED);
+		//处理tags分割逗号
+		//po.getTags().replace("，",",");
 
 		// 处理摘要
 		if (StringUtils.isBlank(post.getSummary())) {
