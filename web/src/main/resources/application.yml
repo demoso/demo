@@ -55,5 +55,5 @@ spring:
 site:
     theme: default
     store:
-      root: d:/data/mblog/
+      root: d:/data/mblog
       size: 2

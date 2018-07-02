@@ -14,10 +14,10 @@
     <div id="home-navbar" class="collapse navbar-collapse">
         <ul class="list-group user-nav first">
             <li class="list-group-item">
-                <a href="${base}/user"><i class="icon icon-layers"></i> 写文章</a>
+                <a href="${base}/post/editing"><i class="icon icon-layers"></i> 写文章</a>
             </li>
             <li class="list-group-item">
-                <a href="${base}/user?method=posts"><i class="icon icon-list"></i> 创建专栏</a>
+                <a href="${base}/column/editing"><i class="icon icon-list"></i> 创建专栏</a>
             </li>
         </ul>
     </div>

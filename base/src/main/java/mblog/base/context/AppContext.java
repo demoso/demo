@@ -41,6 +41,12 @@ public class AppContext {
 	 * 文件存储-头像目录
 	 */
 	String avaDir = "/store/ava";
+
+
+	/*
+	 * 文件存储-专栏LOGO目录
+	 */
+	String cologoDir = "/store/cologo";
 	
 	/*
 	 * 文件存储-临时文件目录
@@ -91,6 +97,15 @@ public class AppContext {
 
 	public void setAvaDir(String avaDir) {
 		this.avaDir = avaDir;
+	}
+
+
+	public String getCologoDir() {
+		return cologoDir;
+	}
+
+	public void setCologoDir(String cologoDir) {
+		this.cologoDir = cologoDir;
 	}
 
 	public Map<String, String> getConfig() {

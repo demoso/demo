@@ -27,7 +27,8 @@ seajs.config({
 
         'highlight':'vendors/highlight/highlight.pack',
         "tinymce": "vendors/tinymce/tinymce.min",
-        "form": "dist/js/jquery.form.min"
+        "form": "dist/js/jquery.form.min",
+        'cologo': 'default/js/modules/cologo'
     },
 
     // 路径配置
