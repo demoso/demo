@@ -175,4 +175,15 @@ h3.padding {
     padding-top: 4px;
 }
 
+/* column edit*/
+.column-inputbox {
+    background-color: #fff;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.form-back {
+    background-color: #F8F8F8;
+}
+
 

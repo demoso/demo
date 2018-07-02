@@ -17,7 +17,7 @@
                 <a href="${base}/post/editing"><i class="icon icon-layers"></i> 写文章</a>
             </li>
             <li class="list-group-item">
-                <a href="${base}/column/editing"><i class="icon icon-list"></i> 创建专栏</a>
+                <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
             </li>
         </ul>
     </div>

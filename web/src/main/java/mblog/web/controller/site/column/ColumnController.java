@@ -4,17 +4,13 @@ import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
 import mblog.modules.column.service.ColumnService;
-import mblog.modules.user.data.AccountProfile;
 import mblog.web.controller.BaseController;
 import mblog.web.controller.site.Views;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import mblog.modules.column.entity.Columnlist;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.File;
@@ -25,20 +21,25 @@ public class ColumnController extends BaseController {
     @Autowired
     private ColumnService columnServic;
 
-    @RequestMapping(value = "/editing", method = RequestMethod.GET)
-    public String view() {
-        return view(Views.COl_EDITING);
+    @RequestMapping(value = "/uploadlogo", method = RequestMethod.GET)
+    public String logoview() {
+        return view(Views.COl_UPLOADLOGO);
+    }
+
+    @RequestMapping(value = "/regfrom", method = RequestMethod.GET)
+    public String regfromview() {
+        return view(Views.COl_REGFROM);
     }
     /**
      * 提交发布
      * @param post
      * @return
      */
-    @PostMapping("/submit")
+    @PostMapping("/logosubmit")
     public String post(String path, Float x, Float y, Float width, Float height, ModelMap model) {
         if (org.springframework.util.StringUtils.isEmpty(path)) {
             model.put("data", Data.failure("请选择图片"));
-            return view(Views.COl_EDITING);
+            return view(Views.COl_UPLOADLOGO);
         }
 
         if (width != null && height != null) {
@@ -65,6 +66,7 @@ public class ColumnController extends BaseController {
                 ImageUtils.scaleImage(new File(scalePath), dest, 100);
 
                 scale = new File(scalePath);
+                model.put("destpath", dest);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -73,12 +75,7 @@ public class ColumnController extends BaseController {
                     scale.delete();
                 }
             }
-//        Assert.notNull(columnlist, "参数不完整");
-//        Assert.state(StringUtils.isNotBlank(columnlist.getColname()), "名字不能为空");
-//        Assert.state(StringUtils.isNotBlank(columnlist.getComment()), "描述不能为空");
-//        Assert.state(StringUtils.isNotBlank(columnlist.getLogo()), "LOGO不能为空");
-//        columnServic.post(columnlist);
         }
-        return view(Views.COl_EDITING);
+        return view(Views.COl_UPLOADLOGO);
     }
 }

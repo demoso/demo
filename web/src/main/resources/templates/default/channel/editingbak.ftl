@@ -35,7 +35,7 @@
                     <ul id="tags"></ul>
                 </div>
             </div>
-            <!--div class="panel panel-default corner-radius help-box">
+            <div class="panel panel-default corner-radius help-box">
                 <div class="convent_choice">
                     <div class="andArea" id="thumbnail_image">
                         <div class="upload-btn">
@@ -52,7 +52,8 @@
                         width: 100%;
                     }
                     .andArea {
-                        <#--background: url(${base}/dist/images/btn/add_img.png) no-repeat scroll center 25px rgba(0, 0, 0, 0);-->
+                        < background: url(${base}/dist/images/btn/add_img.png) no-repeat scroll center 25px rgba(0, 0, 0, 0);
+                    >
                         border: 1px dashed #E6E6E6;
                         color: #CCCCCC;
                         font-size: 18px;
@@ -65,7 +66,7 @@
                         margin-bottom: 9px;
                     }
                 </style>
-            </div-->
+            </div>
             <div class="form-group">
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" style="padding-left: 30px; padding-right: 30px;">提交</button>
