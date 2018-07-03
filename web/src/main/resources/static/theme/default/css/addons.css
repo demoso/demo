@@ -186,4 +186,26 @@ h3.padding {
     background-color: #F8F8F8;
 }
 
+.update_logo {
+    width: 240px;
+    min-height: 240px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #fafafa;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+}
 
+.update_logo img {
+    width: 240px;
+    height: 240px;
+}
+
+.logo-box {
+    width: 100px;
+    min-height: 100px;
+    margin: auto;
+    background-color: #fafafa;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+}

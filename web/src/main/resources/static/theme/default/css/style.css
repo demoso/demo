@@ -1238,8 +1238,25 @@ abbr[data-original-title], abbr[title] {
 
 /* 上传头像按钮 */
 .upload-btn {text-align: center;}
-.upload-btn label { background-color: #62c162; color: white; padding: 6px 0px; font-size: 40%; font-weight: bold; cursor: pointer; border-radius: 2px; position: relative; overflow: hidden; display: block; width: 240px; margin: 10px auto 0px auto; }
-.upload-btn label:hover { background-color: #5cb85c; }
+
+.upload-btn label {
+    background-color: #00b5ad;
+    color: white;
+    padding: 6px 0px;
+    font-size: 40%;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 240px;
+    margin: 10px auto 0px auto;
+}
+
+.upload-btn label:hover {
+    background-color: #00b5ad;
+}
 .upload-btn span { cursor: pointer; }
 .upload-btn input { position: absolute; top: 0; right: 0; margin: 0; border: solid transparent; opacity: .0; filter: alpha(opacity = 0); direction: ltr; cursor: pointer; }
 

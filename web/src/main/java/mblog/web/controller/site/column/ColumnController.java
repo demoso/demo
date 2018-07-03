@@ -3,17 +3,23 @@ package mblog.web.controller.site.column;
 import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
+import mblog.modules.column.entity.Columnlist;
 import mblog.modules.column.service.ColumnService;
+import mblog.modules.user.data.AccountProfile;
 import mblog.web.controller.BaseController;
 import mblog.web.controller.site.Views;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/column")
@@ -31,8 +37,8 @@ public class ColumnController extends BaseController {
         return view(Views.COl_REGFROM);
     }
     /**
-     * 提交发布
-     * @param post
+     * 提交保存logo图片
+     * @param
      * @return
      */
     @PostMapping("/logosubmit")
@@ -59,14 +65,14 @@ public class ColumnController extends BaseController {
                 String scalePath = f.getParent() + "/scalePath" + FileNameUtils.genFileName("jpg");
                 System.out.println("scalePath:" + scalePath);
                 System.out.println("temp:" + temp);
-                System.out.println("dest:" + dest);
+                System.out.println("dest:" + ava100);
                 ImageUtils.cutImage(temp, scalePath, x.intValue(), y.intValue(), width.intValue());
 
                 // 对结果图片进行压缩
                 ImageUtils.scaleImage(new File(scalePath), dest, 100);
 
                 scale = new File(scalePath);
-                model.put("destpath", dest);
+                model.put("dest", ava100);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -76,6 +82,31 @@ public class ColumnController extends BaseController {
                 }
             }
         }
-        return view(Views.COl_UPLOADLOGO);
+        return view(Views.COl_REGFROM);
+    }
+
+    /**
+     * 提交保存专栏
+     *
+     * @param
+     * @return
+     */
+    @PostMapping("/submit")
+    public String post(Columnlist columnlist) throws IOException {
+        System.out.println(columnlist.getColname());
+        Assert.notNull(columnlist, "参数不完整");
+        Assert.state(StringUtils.isNotBlank(columnlist.getColname()), "专栏名不能为空");
+        Assert.state(StringUtils.isNotBlank(columnlist.getComment()), "简介不能为空");
+        AccountProfile profile = getSubject().getProfile();
+        columnlist.setAuthorId(profile.getId());
+        // 修改时, 验证归属
+//        if(columnlist.getId()>0){
+//            columnlist exist=columnServic.
+//        }
+        columnlist.setCreated(new Date());
+        columnlist.setHot(100);
+        columnlist.setIdxstatus(100);
+        columnServic.post(columnlist);
+        return view(Views.COl_REGFROM);
     }
 }

@@ -9,12 +9,15 @@
     <div class="col-xs-12 col-md-9">
         <div class="panel panel-default stacked">
             <div class="panel-heading">
-                <ul class="nav nav-pills account-tab">
-                    <li><a href="${base}/column/regfrom">基本信息</a></li>
-                    <li class="active"><a href="${base}/column/uploadlogo">上传LOGO</a></li>
-                </ul>
+                <h2 class="panel-title" style="margin-top: 15px;text-align: center"><strong>创建专栏</strong></h2>
             </div>
             <div class="panel-body">
+                <div class="create_intro">
+                    <h5>专栏创建标准：</h5>
+                    <p>1. 专栏文章以成体系，原创性为主</p>
+                    <p>2. 专栏主题明确，简介翔实清晰</p>
+                </div>
+
                 <form class="form-horizontal" action="${base}/column/logosubmit" method="post">
                     <input type="hidden" id="x" name="x" value=""/>
                     <input type="hidden" id="y" name="y" value=""/>
@@ -23,16 +26,17 @@
                     <input type="hidden" id="path" name="path" value=""/>
                     <div class="form-group upload-btn">
                         <label>
-                            <span>点击选择一张图片</span>
-                            <input id="upload_btn" type="file" name="file" accept="image/*" title="点击添加图片">
+                            <span>点击添加图片作为专栏LOGO</span>
+                            <input id="upload_btn" type="file" name="file" accept="image/*" title="点击添加图片作为专栏LOGO">
                         </label>
                     </div>
-                    <div class="update_ava">
-                        <img src="<@resource src=destpath/>" id="target" alt="[Example]"/>
+                    <div class="update_logo">
+                        <img src="${base}${dest!"/dist/images/btn/add_img.png"}" id="target" alt="[Example]"/>
                     </div>
+
                     <div class="form-group">
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="submit" class="btn btn-primary">下一步</button>
                         </div>
                     </div>
                 </form>
