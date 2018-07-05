@@ -55,4 +55,6 @@ public interface Views {
 	String ROUTE_POST_VIEW = "/channel/view";
 	String COl_UPLOADLOGO = "/column/uploadlogo";
 	String COl_REGFROM = "/column/regfrom";
+	String USER_COLLIST = "/user/column_list";
+	String COl_ARTICLE = "/column/column_article";
 }

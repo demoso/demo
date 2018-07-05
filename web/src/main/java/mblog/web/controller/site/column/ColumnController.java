@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -98,6 +96,7 @@ public class ColumnController extends BaseController {
         Assert.state(StringUtils.isNotBlank(columnlist.getColname()), "专栏名不能为空");
         Assert.state(StringUtils.isNotBlank(columnlist.getComment()), "简介不能为空");
         AccountProfile profile = getSubject().getProfile();
+        System.out.println(profile.getId());
         columnlist.setAuthorId(profile.getId());
         // 修改时, 验证归属
 //        if(columnlist.getId()>0){
@@ -107,6 +106,28 @@ public class ColumnController extends BaseController {
         columnlist.setHot(100);
         columnlist.setIdxstatus(100);
         columnServic.post(columnlist);
-        return view(Views.COl_REGFROM);
+        return "redirect:/user/columnlist";
+    }
+
+    /**
+     * 删除专栏
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/{id}")
+    public @ResponseBody
+    Data delete(@PathVariable Integer id) {
+        Data data = Data.failure("操作失败");
+        if (id != null) {
+            AccountProfile up = getSubject().getProfile();
+            try {
+                columnServic.delete(id, up.getId());
+                data = Data.success("操作成功", Data.NOOP);
+            } catch (Exception e) {
+                data = Data.failure(e.getMessage());
+            }
+        }
+        return data;
     }
 }

@@ -17,6 +17,8 @@ import mblog.modules.blog.service.CommentService;
 import mblog.modules.blog.service.FavorService;
 import mblog.modules.blog.service.FeedsService;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.column.entity.Columnlist;
+import mblog.modules.column.service.ColumnService;
 import mblog.modules.user.data.AccountProfile;
 import mblog.modules.user.data.BadgesCount;
 import mblog.modules.user.data.NotifyVO;
@@ -33,6 +35,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 /**
  * 用户主页
@@ -55,6 +60,8 @@ public class UserController extends BaseController {
 	private FavorService favorService;
 	@Autowired
 	private NotifyService notifyService;
+	@Autowired
+	private ColumnService columnServic;
 
 	/**
 	 * 用户主页
@@ -90,6 +97,7 @@ public class UserController extends BaseController {
 
 		return view(Views.USER_POSTS);
 	}
+
 
 	/**
 	 * 我发表的评论
@@ -195,6 +203,41 @@ public class UserController extends BaseController {
 			profile.setBadgesCount(count);
 			session.setAttribute("profile", profile);
 		}
+	}
+
+	/**
+	 * 我的专栏
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "/user/columnlist")
+	public String usercolumn(ModelMap model) {
+		AccountProfile up = getSubject().getProfile();
+		List<Columnlist> listcolumn = columnServic.findByAuthorId(up.getId());
+		model.put("listcolumn", listcolumn);
+		initUser(model);
+
+		return view(Views.USER_COLLIST);
+	}
+
+	/**
+	 * 我发布的文章forcolumn
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "/user/colartedit/{id}")
+	public String myposts(ModelMap model, @PathVariable int id) {
+		Pageable pageable = wrapPageable();
+		AccountProfile up = getSubject().getProfile();
+		Page<PostVO> page = postService.pagingByAuthorId(pageable, up.getId());
+
+		model.put("page", page);
+		model.put("id", id);
+		initUser(model);
+
+		return view(Views.COl_ARTICLE);
 	}
 
 }
