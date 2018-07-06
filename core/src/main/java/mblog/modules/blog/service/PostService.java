@@ -10,6 +10,7 @@
 package mblog.modules.blog.service;
 
 import mblog.modules.blog.data.PostVO;
+import mblog.modules.blog.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -160,6 +161,15 @@ public interface PostService {
 	 * @param postId
 	 */
 	void unfavor(long userId, long postId);
+
+
+	/**
+	 * 查询没有加入专栏的最近30篇自己的文章
+	 *
+	 * @param authorId
+	 * @param ids
+	 */
+	List<Post> findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Set<Long> ids);
 
 
 	void resetIndexs();

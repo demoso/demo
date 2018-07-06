@@ -35,7 +35,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -221,23 +220,5 @@ public class UserController extends BaseController {
 		return view(Views.USER_COLLIST);
 	}
 
-	/**
-	 * 我发布的文章forcolumn
-	 *
-	 * @param model
-	 * @return
-	 */
-	@GetMapping(value = "/user/colartedit/{id}")
-	public String myposts(ModelMap model, @PathVariable int id) {
-		Pageable pageable = wrapPageable();
-		AccountProfile up = getSubject().getProfile();
-		Page<PostVO> page = postService.pagingByAuthorId(pageable, up.getId());
-
-		model.put("page", page);
-		model.put("id", id);
-		initUser(model);
-
-		return view(Views.COl_ARTICLE);
-	}
 
 }

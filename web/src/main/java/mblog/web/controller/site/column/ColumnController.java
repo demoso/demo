@@ -3,8 +3,12 @@ package mblog.web.controller.site.column;
 import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
+import mblog.modules.blog.entity.Post;
+import mblog.modules.blog.service.PostService;
 import mblog.modules.column.entity.Columnlist;
+import mblog.modules.column.entity.ColumnlistAttr;
 import mblog.modules.column.service.ColumnService;
+import mblog.modules.column.service.ColumnattrService;
 import mblog.modules.user.data.AccountProfile;
 import mblog.web.controller.BaseController;
 import mblog.web.controller.site.Views;
@@ -18,12 +22,19 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/column")
 public class ColumnController extends BaseController {
     @Autowired
     private ColumnService columnServic;
+    @Autowired
+    private PostService postService;
+    @Autowired
+    private ColumnattrService columnattrService;
 
     @RequestMapping(value = "/uploadlogo", method = RequestMethod.GET)
     public String logoview() {
@@ -109,6 +120,15 @@ public class ColumnController extends BaseController {
         return "redirect:/user/columnlist";
     }
 
+    public static boolean isValidLong(String str) {
+        try {
+            Long.parseLong(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     /**
      * 删除专栏
      *
@@ -117,7 +137,7 @@ public class ColumnController extends BaseController {
      */
     @RequestMapping("/delete/{id}")
     public @ResponseBody
-    Data delete(@PathVariable Integer id) {
+    Data deletebyid(@PathVariable Integer id) {
         Data data = Data.failure("操作失败");
         if (id != null) {
             AccountProfile up = getSubject().getProfile();
@@ -129,5 +149,33 @@ public class ColumnController extends BaseController {
             }
         }
         return data;
+    }
+
+    /**
+     * 我发布的文章forcolumn
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/artedit/{userid}/{id}/{colname}")
+    public String myposts(ModelMap model, @PathVariable long userid, @PathVariable int id, @PathVariable String colname) {
+        System.out.println(id + colname);
+        List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(id);
+        Set<Long> ids = new HashSet<>();
+        for (ColumnlistAttr columnlistAttr : columnlistAttrList) {
+            if (isValidLong(columnlistAttr.getUrl())) {
+                long artid = Long.parseLong(columnlistAttr.getUrl());
+                ids.add(artid);
+            }
+
+        }
+        if (ids.isEmpty()) {
+            ids.add(0l);
+        }
+        List<Post> postList = postService.findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(userid, ids);
+        model.put("columnlistAttrList", columnlistAttrList);
+        model.put("postList", postList);
+
+        return view(Views.COl_ARTICLE);
     }
 }

@@ -22,8 +22,8 @@
                         </div>
                         <div class="colbox-inline col-sm-3 hidden-xs"
                              style="text-align: right;padding-right: 10px;padding-top: 15px">
-                            <a class="act_editarticle column-atag" href="/user/colartedit" data-evt="editarticle"
-                               data-id="${row.id}" data-toggle="tooltip" title="管理专栏文章">
+                            <a class="act_editarticle column-atag" href="javascript:void(0);" data-evt="editarticle"
+                               data-id="${row.id}" data-colname="${row.colname}" data-toggle="tooltip" title="管理专栏文章">
                                 <i class="icon icon-note"></i>
                             </a>
                             <a class="act_editlogo column-atag" href="javascript:void(0);" data-evt="editlogo"
@@ -73,9 +73,10 @@
         });
 
         // act_editarticle
-        $('a[data-evt=act_editarticle]').click(function () {
+        $('a[data-evt=editarticle]').click(function () {
             var id = $(this).attr('data-id');
-            window.location.href = '${base}/user/colartedit/' + id;
+            var colname = $(this).attr('data-colname');
+            window.location.href = '${base}/column/artedit/${user.id}/' + id + "/ " + colname;
         });
         // edit
         $('a[data-evt=editlogo]').click(function () {

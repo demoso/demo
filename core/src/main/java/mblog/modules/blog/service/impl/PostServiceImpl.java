@@ -14,19 +14,19 @@ import mblog.base.lang.Consts;
 import mblog.base.lang.EntityStatus;
 import mblog.base.utils.PreviewTextUtils;
 import mblog.core.event.PostUpdateEvent;
-import mblog.modules.blog.data.PostVO;
-import mblog.modules.user.data.UserVO;
 import mblog.modules.blog.dao.PostAttributeDao;
 import mblog.modules.blog.dao.PostDao;
+import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.entity.Channel;
-import mblog.modules.blog.entity.PostAttribute;
 import mblog.modules.blog.entity.Post;
-import mblog.modules.utils.BeanMapUtils;
+import mblog.modules.blog.entity.PostAttribute;
 import mblog.modules.blog.service.ChannelService;
 import mblog.modules.blog.service.FavorService;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.user.data.UserVO;
 import mblog.modules.user.service.UserEventService;
 import mblog.modules.user.service.UserService;
+import mblog.modules.utils.BeanMapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,6 +197,11 @@ public class PostServiceImpl implements PostService {
 		list.forEach(po -> rets.add(BeanMapUtils.copy(po, 0)));
 
 		return rets;
+	}
+
+	@Override
+	public List<Post> findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Set<Long> ids) {
+		return postDao.findTop30ByAuthorIdAndIdNotInOrderByCreatedDesc(authorId, ids);
 	}
 	
 	@Override

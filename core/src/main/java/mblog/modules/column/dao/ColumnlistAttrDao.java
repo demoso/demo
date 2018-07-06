@@ -7,4 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ColumnlistAttrDao extends JpaRepository<ColumnlistAttr, Integer>, CrudRepository<ColumnlistAttr,Integer> {
+    public List<ColumnlistAttr> findByColumnidOrderByHotAsc(int columnid);
+
+    public void deleteByColumnid(int columnid);
 }

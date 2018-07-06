@@ -1,12 +1,16 @@
 <#include "/default/utils/ui.ftl"/>
 
-<@layout "我的文章">
-<div class="row users-show">
-    <div class="col-xs-12 col-md-3 side-left">
-		<#include "/default/user/left.ftl"/>
+<@layout "专栏整理">
+<div class="row">
+    <div class="col-xs-12 col-md-6 side-left">
+        <#list postList as row>
+            ${row.id}
+        </#list>
     </div>
-    <div class="col-xs-12 col-md-9 side-right">
-
+    <div class="col-xs-12 col-md-6 side-right">
+        <#list postList as row>
+            ${row.id}
+        </#list>
     </div>
 </div>
 <!-- /end -->
