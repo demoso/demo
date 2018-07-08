@@ -175,6 +175,7 @@ public class ColumnController extends BaseController {
         List<Post> postList = postService.findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(userid, ids);
         model.put("columnlistAttrList", columnlistAttrList);
         model.put("postList", postList);
+        model.put("colname", colname);
 
         return view(Views.COl_ARTICLE);
     }

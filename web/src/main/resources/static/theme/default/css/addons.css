@@ -225,3 +225,23 @@ h3.padding {
 .column-atag {
     padding-right: 10px;
 }
+
+td input {
+    margin-right: 5px;
+}
+
+td input.input-button {
+    margin-right: auto;
+}
+
+td input.act-button {
+    margin-right: 4px;
+}
+
+input.tab-input {
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
