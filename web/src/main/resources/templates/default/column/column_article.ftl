@@ -9,27 +9,23 @@
             </div>
 
             <div class="panel-body">
-                <table id="col-table" class="table table-bordered">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th width="20%">链接(默认文章ID)</th>
-                        <th width="52%">标题(为了整齐有序，字数控制在30以内）</th>
+                        <th width="52%">标题(字数控制在30以内）</th>
                         <th width="6%">显示</th>
-                        <th width="22%">
-                            <input class="up" type="button" value="上">
-                            <input class="down" type="button" value="下">
-                            <input class="delete" type="button" value="删">
-                            <input class="add" type="button" value="加">
-                        </th>
+                        <th width="22%">操作</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tab-list">
                     <#list columnlistAttrList as row>
                     <tr>
-                        <td><input class="tab-input" type="text" value="${row.url}"></td>
-                        <td><input class="tab-input" type="text" value="${row.title}" required></td>
+                        <td><input class="tab-input" type="text" name="url" value="${row.url}"></td>
+                        <td><input class="tab-input" type="text" name="title" value="${row.title}" required="required">
+                        </td>
                         <td>
-                            <select>
+                            <select name="csstype">
                                 <option value="${row.csstype}" selected>${row.csstype}</option>
                                 <option value="H2">H2</option>
                             </select>
@@ -42,9 +38,27 @@
                         </td>
                     </tr>
                     </#list>
-
+                    <#if columnlistAttrList?size == 0>
+                   <tr>
+                       <td><input class="tab-input" type="text" name="url"></td>
+                       <td><input class="tab-input" type="text" name="title" required="required"></td>
+                       <td>
+                           <select name="csstype">
+                               <option value="H3" selected>H3</option>
+                               <option value="H2">H2</option>
+                           </select>
+                       </td>
+                       <td>
+                           <input class="up input-button" type="button" value="上">
+                           <input class="down input-button" type="button" value="下">
+                           <input class="delete input-button" type="button" value="删">
+                           <input class="add input-button" type="button" value="加">
+                       </td>
+                   </tr>
+                    </#if>
                     </tbody>
                 </table>
+                <input id="submit-but" type="button" value="提交" style="text-align: center">
             </div>
         </div>
     </div>
@@ -94,15 +108,30 @@
         });
 
         $(".add").live('click', function () {
-            $('<tr><td><input class="tab-input" type="text"></td><td><input class="tab-input" type="text" required></td><td><select><option value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
+            $('<tr><td><input class="tab-input" type="text" name="url"></td><td><input class="tab-input" type="text" name="title"  required="required"></td><td><select name="csstype"><option value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
                     .insertAfter($(this).parent().parent());
         });
 
         $(".addtotab").live('click', function () {
             var id = $(this).attr('data-id');
             var title = $(this).attr('data-title');
-            $('<tr><td><input class="tab-input" type="text" value=' + id + '></td><td><input class="tab-input" type="text" value=' + title + ' ></td><td><select ><option  value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
-                    .insertAfter($("#col-table").children().children().last())
+            $(this).css("background-color", "#38b7ea");
+            $("#tab-list").append('<tr><td><input class="tab-input" type="text" name="url" value=' + id + '></td><td><input class="tab-input" type="text" name="title" value=' + title + ' ></td><td><select name="csstype"><option  value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
+        });
+
+        $("#submit-but").live('click', function () {
+            var args = [];
+            $("#tab-list").children().each(function (i) {
+                var data = {};
+                $(this).find("select[name],input[name]").each(function () {
+                    var name = $(this).attr("name");
+                    data[name] = $(this).val();
+                });
+                args[i] = data;
+            });
+            $.post("/column/savecolattr/${id}", {data: JSON.stringify(args)}, function () {
+                window.location.reload();
+            });
         });
     });
 </script>

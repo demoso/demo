@@ -10,4 +10,6 @@ public interface ColumnlistAttrDao extends JpaRepository<ColumnlistAttr, Integer
     public List<ColumnlistAttr> findByColumnidOrderByHotAsc(int columnid);
 
     public void deleteByColumnid(int columnid);
+
+    public void deleteByColumnidAndUrl(int columnid, String url);
 }

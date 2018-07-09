@@ -1,5 +1,7 @@
 package mblog.web.controller.site.column;
 
+
+import com.alibaba.fastjson.JSONArray;
 import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
@@ -159,7 +161,6 @@ public class ColumnController extends BaseController {
      */
     @GetMapping(value = "/artedit/{userid}/{id}/{colname}")
     public String myposts(ModelMap model, @PathVariable long userid, @PathVariable int id, @PathVariable String colname) {
-        System.out.println(id + colname);
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(id);
         Set<Long> ids = new HashSet<>();
         for (ColumnlistAttr columnlistAttr : columnlistAttrList) {
@@ -176,7 +177,25 @@ public class ColumnController extends BaseController {
         model.put("columnlistAttrList", columnlistAttrList);
         model.put("postList", postList);
         model.put("colname", colname);
+        model.put("id", id);
 
         return view(Views.COl_ARTICLE);
+    }
+
+    @PostMapping("/savecolattr/{id}")
+    public String savecollistattr(@RequestParam("data") String data, @PathVariable int id) {
+        if (data != null && !"".equals(data)) {
+            List<ColumnlistAttr> columnlistAttrs = JSONArray.parseArray(data, ColumnlistAttr.class);
+
+            columnattrService.deleteByColumnid(id);
+            for (int i = 0; i < columnlistAttrs.size(); i++) {
+                ColumnlistAttr columnlistAttr = columnlistAttrs.get(i);
+                columnlistAttr.setColumnid(id);
+                columnlistAttr.setCreated(new Date());
+                columnlistAttr.setHot(i);
+                columnattrService.post(columnlistAttr);
+            }
+        }
+        return "redirect:/";
     }
 }

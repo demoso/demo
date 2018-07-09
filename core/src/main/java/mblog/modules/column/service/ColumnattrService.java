@@ -30,5 +30,13 @@ public class ColumnattrService {
 
     }
 
+    @Transactional
+    public void deleteByColumnidAndUrl(int columnid, String url) {
+
+        columnlistAttrDao.deleteByColumnidAndUrl(columnid, url);
+        System.out.println("deleteByColumnidAndUrl");
+
+    }
+
 
 }
