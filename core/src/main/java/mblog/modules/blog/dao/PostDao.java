@@ -47,7 +47,7 @@ public interface PostDao extends JpaRepository<Post, Long>, JpaSpecificationExec
 	List<Post> findTop5ByFeaturedGreaterThanOrderByCreatedDesc(int featured);
 
 
-	List<Post> findTop30ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Collection<Long> id);
+	List<Post> findTop18ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Collection<Long> id);
 
 	@Query("select coalesce(max(weight), 0) from Post")
 	int maxWeight();

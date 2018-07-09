@@ -201,7 +201,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<Post> findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Set<Long> ids) {
-		return postDao.findTop30ByAuthorIdAndIdNotInOrderByCreatedDesc(authorId, ids);
+        return postDao.findTop18ByAuthorIdAndIdNotInOrderByCreatedDesc(authorId, ids);
 	}
 	
 	@Override
