@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var jcrop_init = false;
     var upload_url = app.base + '/post/upload?scale=true&size=300';
     var base_url = app.base;
+    var uploadlogo_url = app.base + '/column/logosubmit';
 
     function getRandom() {
         var dim = jcrop_api.getBounds();
@@ -64,6 +65,22 @@ define(function (require, exports, module) {
                     });
                 }
             }
+        });
+    });
+
+    $('#submit-button').click(function () {
+        var x = $('#x').val();
+        var y = $('#y').val();
+        var width = $('#width').val();
+        var height = $('#height').val();
+        var path = $('#path').val();
+
+        $.post("/column/logosubmit", {x: x, y: y, width: width, height: height, path: path}, function (data) {
+            var path = data.replace("\"", "").replace("\"", "");
+            alert(path);
+            $('#update_logo').empty();
+            $('#update_logo').append('<img src="' + path + '" id="target" alt="[Example]"/>');
+            $('#logo').val(path);
         });
     });
 

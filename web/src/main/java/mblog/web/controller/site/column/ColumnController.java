@@ -53,10 +53,12 @@ public class ColumnController extends BaseController {
      * @return
      */
     @PostMapping("/logosubmit")
-    public String post(String path, Float x, Float y, Float width, Float height, ModelMap model) {
+    public @ResponseBody
+    String post(String path, Float x, Float y, Float width, Float height) {
+        String deststr = null;
         if (org.springframework.util.StringUtils.isEmpty(path)) {
-            model.put("data", Data.failure("请选择图片"));
-            return view(Views.COl_UPLOADLOGO);
+            deststr = "请选择图片";
+            return deststr;
         }
 
         if (width != null && height != null) {
@@ -74,16 +76,14 @@ public class ColumnController extends BaseController {
                 }
                 // 在目标目录下生成截图
                 String scalePath = f.getParent() + "/scalePath" + FileNameUtils.genFileName("jpg");
-                System.out.println("scalePath:" + scalePath);
-                System.out.println("temp:" + temp);
-                System.out.println("dest:" + ava100);
+
                 ImageUtils.cutImage(temp, scalePath, x.intValue(), y.intValue(), width.intValue());
 
                 // 对结果图片进行压缩
-                ImageUtils.scaleImage(new File(scalePath), dest, 100);
+                ImageUtils.scaleImage(new File(scalePath), dest, 240);
 
                 scale = new File(scalePath);
-                model.put("dest", ava100);
+                deststr = ava100;
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -93,7 +93,7 @@ public class ColumnController extends BaseController {
                 }
             }
         }
-        return view(Views.COl_REGFROM);
+        return deststr;
     }
 
     /**
@@ -183,7 +183,8 @@ public class ColumnController extends BaseController {
     }
 
     @PostMapping("/savecolattr/{id}")
-    public String savecollistattr(@RequestParam("data") String data, @PathVariable int id) {
+    public @ResponseBody
+    String savecollistattr(@RequestParam("data") String data, @PathVariable int id) {
         if (data != null && !"".equals(data)) {
             List<ColumnlistAttr> columnlistAttrs = JSONArray.parseArray(data, ColumnlistAttr.class);
 
@@ -196,6 +197,6 @@ public class ColumnController extends BaseController {
                 columnattrService.post(columnlistAttr);
             }
         }
-        return "redirect:/";
+        return "ok";
     }
 }
