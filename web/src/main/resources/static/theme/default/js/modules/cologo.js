@@ -77,7 +77,6 @@ define(function (require, exports, module) {
 
         $.post("/column/logosubmit", {x: x, y: y, width: width, height: height, path: path}, function (data) {
             var path = data.replace("\"", "").replace("\"", "");
-            alert(path);
             $('#update_logo').empty();
             $('#update_logo').append('<img src="' + path + '" id="target" alt="[Example]"/>');
             $('#logo').val(path);

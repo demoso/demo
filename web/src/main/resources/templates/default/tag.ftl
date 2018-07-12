@@ -3,7 +3,7 @@
 <@layout "标签:" + kw>
 
 <div class="row streams">
-    <div class="col-xs-12 col-md-9 side-left">
+    <div class="col-xs-12 col-md-8 side-left">
         <div class="shadow-box">
             <div class="filter">
                 <div class="alert" style="margin-bottom:0">
@@ -25,7 +25,7 @@
 	          <@pager request.requestURI, page, 5/>
         </div>
     </div>
-    <div class="col-xs-12 col-md-3 side-right">
+    <div class="col-xs-12 col-md-4 side-right">
 		<#include "/default/inc/right.ftl" />
     </div>
 </div>

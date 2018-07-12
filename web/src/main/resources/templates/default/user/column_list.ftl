@@ -26,10 +26,6 @@
                                data-id="${row.id}" data-colname="${row.colname}" data-toggle="tooltip" title="管理专栏文章">
                                 <i class="icon icon-note"></i>
                             </a>
-                            <a class="act_editlogo column-atag" href="javascript:void(0);" data-evt="editlogo"
-                               data-id="${row.id}" data-toggle="tooltip" title="修改LOGO">
-                                <i class="icon icon-note"></i>
-                            </a>
                             <a class="act_edit column-atag" href="javascript:void(0);" data-evt="edit"
                                data-id="${row.id}" data-toggle="tooltip" title="修改专栏">
                                 <i class="icon icon-note"></i>
@@ -79,7 +75,7 @@
             window.location.href = '${base}/column/artedit/${user.id}/' + id + "/ " + colname;
         });
         // edit
-        $('a[data-evt=editlogo]').click(function () {
+        $('a[data-evt=edit]').click(function () {
             var id = $(this).attr('data-id');
             window.location.href = '${base}/post/editing?id=' + id;
         });

@@ -6,6 +6,8 @@
 
 <@layout title>
 <div class="row main">
+    <div class="col-xs-12 col-md-2 side-left hidden-xs hidden-sm">
+    </div>
     <div class="col-xs-12 col-md-8 side-left topics-show">
         <!-- view show -->
         <div class="topic panel panel-default">
@@ -16,11 +18,11 @@
                 <div class="meta inline-block">
 
                     <a class="author" href="${base}/users/${view.author.id}">
-                    ${view.author.name}
+                        ${view.author.name}
                     </a>
                     <abbr class="timeago">${timeAgo(view.created)}</abbr>
                     ⋅
-                ${view.views} 阅读
+                    ${view.views} 阅读
 
                 </div>
                 <div class="clearfix"></div>
@@ -28,7 +30,7 @@
 
             <div class="content-body entry-content panel-body ">
                 <div class="markdown-body">
-                ${view.content}
+                    ${view.content}
                 </div>
             </div>
             <div class="panel-footer operate">
@@ -83,41 +85,7 @@
         </div>
         <!-- /view show -->
     </div>
-    <div class="col-xs-12 col-md-4 side-right hidden-xs hidden-sm">
-        <ul class="list-group about-user">
-            <li class="list-group-item user-card" >
-                <div class="user-avatar">
-                    <a href="${base}/users/${view.author.id}">
-                        <@showAva view.author.avatar "img-circle"/>
-                    </a>
-                </div>
-                <div class="user-name">
-                    <span>${view.author.name}</span>
-                </div>
-            </li>
-
-            <li class="list-group-item">
-                <a class="btn btn-primary btn-block btn-sm" href="javascript:void(0);" data-id="${view.author.id}" rel="follow"><i class="icon icon-user-follow"></i> 关注</a>
-            </li>
-
-            <li class="list-group-item">
-                <div class="user-datas">
-                    <ul>
-                        <li><strong>${view.author.posts}</strong><span>发布</span></li>
-                        <li class="noborder"><strong>${view.author.comments}</strong><span>评论</span></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="text-center">
-                    <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
-                        <i class="icon icon-like"></i> 喜欢
-                    </a>
-                    <strong id="favors">${view.favors}</strong> 喜欢
-                </div>
-            </li>
-        </ul>
-        <#include "/default/inc/right.ftl"/>
+    <div class="col-xs-12 col-md-2 side-right hidden-xs hidden-sm">
     </div>
 </div>
 
@@ -139,6 +107,7 @@
         <div class="clear"></div>
         <div class="chat_reply"></div>
     </li>
+
 </script>
 
 <script type="text/javascript">
@@ -151,6 +120,7 @@
 
         $('#chat_reply').show();
     }
+
     var container = $("#chat_container");
     var template = $('#chat_template')[0].text;
 

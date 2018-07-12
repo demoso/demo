@@ -57,4 +57,5 @@ public interface Views {
 	String COl_REGFROM = "/column/regfrom";
 	String USER_COLLIST = "/user/column_list";
 	String COl_ARTICLE = "/column/column_article";
+	String COL_VIEW = "/column/column_view";
 }

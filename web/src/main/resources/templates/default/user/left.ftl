@@ -33,7 +33,7 @@
                 <a href="${base}/post/editing"><i class="icon icon-layers"></i> 写文章</a>
             </li>
             <li class="list-group-item">
-                <a href="${base}/column/uploadlogo"><i class="icon icon-list"></i> 创建专栏</a>
+                <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
             </li>
             <li class="list-group-item">
                 <a href="${base}/user/columnlist"><i class="icon icon-list"></i> 我的专栏</a>

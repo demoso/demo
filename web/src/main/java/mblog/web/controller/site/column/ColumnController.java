@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
+import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.entity.Post;
 import mblog.modules.blog.service.PostService;
 import mblog.modules.column.entity.Columnlist;
@@ -32,16 +33,12 @@ import java.util.Set;
 @RequestMapping("/column")
 public class ColumnController extends BaseController {
     @Autowired
-    private ColumnService columnServic;
+    private ColumnService columnService;
     @Autowired
     private PostService postService;
     @Autowired
     private ColumnattrService columnattrService;
 
-    @RequestMapping(value = "/uploadlogo", method = RequestMethod.GET)
-    public String logoview() {
-        return view(Views.COl_UPLOADLOGO);
-    }
 
     @RequestMapping(value = "/regfrom", method = RequestMethod.GET)
     public String regfromview() {
@@ -118,7 +115,7 @@ public class ColumnController extends BaseController {
         columnlist.setCreated(new Date());
         columnlist.setHot(100);
         columnlist.setIdxstatus(100);
-        columnServic.post(columnlist);
+        columnService.post(columnlist);
         return "redirect:/user/columnlist";
     }
 
@@ -133,9 +130,6 @@ public class ColumnController extends BaseController {
 
     /**
      * 删除专栏
-     *
-     * @param id
-     * @return
      */
     @RequestMapping("/delete/{id}")
     public @ResponseBody
@@ -144,7 +138,7 @@ public class ColumnController extends BaseController {
         if (id != null) {
             AccountProfile up = getSubject().getProfile();
             try {
-                columnServic.delete(id, up.getId());
+                columnService.delete(id, up.getId());
                 data = Data.success("操作成功", Data.NOOP);
             } catch (Exception e) {
                 data = Data.failure(e.getMessage());
@@ -154,21 +148,14 @@ public class ColumnController extends BaseController {
     }
 
     /**
-     * 我发布的文章forcolumn
-     *
-     * @param model
-     * @return
+     * 修改我的专栏
      */
     @GetMapping(value = "/artedit/{userid}/{id}/{colname}")
     public String myposts(ModelMap model, @PathVariable long userid, @PathVariable int id, @PathVariable String colname) {
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(id);
         Set<Long> ids = new HashSet<>();
         for (ColumnlistAttr columnlistAttr : columnlistAttrList) {
-            if (isValidLong(columnlistAttr.getUrl())) {
-                long artid = Long.parseLong(columnlistAttr.getUrl());
-                ids.add(artid);
-            }
-
+            ids.add(columnlistAttr.getUrl());
         }
         if (ids.isEmpty()) {
             ids.add(0l);
@@ -182,6 +169,9 @@ public class ColumnController extends BaseController {
         return view(Views.COl_ARTICLE);
     }
 
+    /**
+     * 保存我的专栏
+     */
     @PostMapping("/savecolattr/{id}")
     public @ResponseBody
     String savecollistattr(@RequestParam("data") String data, @PathVariable int id) {
@@ -199,4 +189,41 @@ public class ColumnController extends BaseController {
         }
         return "ok";
     }
+
+    /**
+     * 专栏文章view
+     */
+    @RequestMapping("/view/columnid/{id}")
+    public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
+        PostVO view = postService.get(id);
+        Assert.notNull(view, "该文章已被删除");
+
+        ColumnlistAttr pre = null;
+        ColumnlistAttr next = null;
+        int next_state = 0;
+        List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(columnid);
+        for (int i = 0; i < columnlistAttrList.size(); i++) {
+            long cur_articleid = columnlistAttrList.get(i).getUrl();
+            if (next_state == 1) {
+                next = columnlistAttrList.get(i);
+                break;
+            }
+            if (cur_articleid == id) {
+                next_state = 1;
+            }
+            if (cur_articleid != id) {
+                pre = columnlistAttrList.get(i);
+            }
+
+        }
+
+        postService.identityViews(id);
+        model.put("view", view);
+        model.put("pre", pre);
+        model.put("next", next);
+        model.put("columnlistAttrList", columnlistAttrList);
+        return view(Views.COL_VIEW);
+    }
+
+
 }

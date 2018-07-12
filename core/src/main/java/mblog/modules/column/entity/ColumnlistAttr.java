@@ -23,7 +23,7 @@ public class ColumnlistAttr {
     private int columnid;
 
     @Column(name = "url")
-    private String url;
+    private long url;
 
     @Column(name = "title")
     private String title;
@@ -53,11 +53,11 @@ public class ColumnlistAttr {
         this.columnid = columnid;
     }
 
-    public String getUrl() {
+    public long getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(long url) {
         this.url = url;
     }
 

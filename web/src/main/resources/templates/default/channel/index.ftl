@@ -1,7 +1,7 @@
 <#include "/default/utils/ui.ftl"/>
 <@layout channel.name>
     <div class="row streams">
-        <div class="col-xs-12 col-md-9 side-left">
+        <div class="col-xs-12 col-md-8 side-left">
 
                 <@contents channelId=channel.id pn=pn order=order>
 
@@ -38,7 +38,7 @@
 
         </div>
 
-        <div class="col-xs-12 col-md-3 side-right">
+        <div class="col-xs-12 col-md-4 side-right">
             <#include "/default/inc/right.ftl" />
         </div>
 
