@@ -3,6 +3,7 @@ package mblog.modules.column.service;
 import mblog.modules.column.dao.ColumnlistDao;
 import mblog.modules.column.entity.Columnlist;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -24,10 +25,20 @@ public class ColumnService {
         return columnlistDao.findByAuthorId(authorId);
     }
 
+    /*我的专栏*/
+    public Columnlist findOne(int id) {
+        return columnlistDao.findOne(id);
+    }
+
 
     @Transactional
     public void post(Columnlist columnlist){
         columnlistDao.save(columnlist);
+    }
+
+    @Transactional
+    public void updateColumnlist(@Param("colname") String colname, @Param("comment") String comment, @Param("logo") String logo, @Param("classify") String classify, @Param("id") long id) {
+        columnlistDao.updateColumnlist(colname, comment, logo, classify, id);
     }
 
     @Transactional

@@ -30,7 +30,7 @@
                             <label for="logo" class="col-sm-2 control-label">LOGO</label>
                             <div class="col-sm-10 upload-btn">
                                 <div class="update_logo" id="update_logo">
-                                    <img src="${base}${dest!"/dist/images/btn/add_img.png"}" id="target"
+                                    <img src="${base}${columnlist.logo!"/dist/images/btn/add_img.png"}" id="target"
                                          alt="[Example]"/>
                                 </div>
                                 <label style="display: inline-block;">
@@ -46,24 +46,25 @@
                         </div>
                     </form>
                     <form class="form-horizontal" action="${base}/column/submit" method="post">
-                        <input type="hidden" id="logo" name="logo" value="${dest}"/>
+                        <input type="hidden" id="logo" name="logo" value="${columnlist.logo}"/>
                         <div class="form-group">
                             <label for="colname" class="col-sm-2 control-label">专栏名称</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control form-back" name="colname" placeholder="请输入专栏名称">
+                                <input type="text" class="form-control form-back" name="colname"
+                                       value="${columnlist.colname}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="comment" class="col-sm-2 control-label">专栏介绍</label>
                             <div class="col-sm-10">
-                                <textarea placeholder="请输入专栏介绍" class="form-control form-back" name="comment"
-                                          rows="10"></textarea>
+                                <textarea class="form-control form-back" name="comment"
+                                          rows="10">${columnlist.comment}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="classify" class="col-sm-2 control-label">专栏分类</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="classify" data-required>
+                                <select class="form-control" name="classify">
                                     <option value="选择分类">选择分类</option>
                                     <option value='前端'>前端</option>
                                     <option value='后端'>后端</option>

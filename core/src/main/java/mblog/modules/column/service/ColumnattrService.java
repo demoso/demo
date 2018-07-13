@@ -1,10 +1,13 @@
 package mblog.modules.column.service;
 
 import mblog.modules.column.dao.ColumnlistAttrDao;
+import mblog.modules.column.dao.ColumnlistDao;
+import mblog.modules.column.entity.Columnlist;
 import mblog.modules.column.entity.ColumnlistAttr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -13,6 +16,8 @@ import java.util.List;
 public class ColumnattrService {
     @Autowired
     private ColumnlistAttrDao columnlistAttrDao;
+    @Autowired
+    private ColumnlistDao columnlistDao;
 
     public List<ColumnlistAttr> findByColumnidOrderByHotAsc(int columnid) {
         return columnlistAttrDao.findByColumnidOrderByHotAsc(columnid);
@@ -24,10 +29,13 @@ public class ColumnattrService {
     }
 
     @Transactional
-    public void deleteByColumnid(int columnid) {
-
-        columnlistAttrDao.deleteByColumnid(columnid);
-
+    public void deleteByColumnid(int columnid, long authorId) {
+        Columnlist columnlist = columnlistDao.findOne(columnid);
+        if (columnlist != null) {
+            // 判断文章是否属于当前登录用户
+            Assert.isTrue(columnlist.getAuthorId() == authorId, "认证失败");
+            columnlistAttrDao.deleteByColumnid(columnid);
+        }
     }
 
     @Transactional

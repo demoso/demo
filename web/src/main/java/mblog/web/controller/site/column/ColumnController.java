@@ -44,6 +44,14 @@ public class ColumnController extends BaseController {
     public String regfromview() {
         return view(Views.COl_REGFROM);
     }
+
+    @RequestMapping(value = "/modifying/{id}", method = RequestMethod.GET)
+    public String colmodify(@PathVariable int id, ModelMap model) {
+        Columnlist columnlist = columnService.findOne(id);
+        model.put("columnlist", columnlist);
+        return view(Views.COl_REGFROM);
+    }
+
     /**
      * 提交保存logo图片
      * @param
@@ -101,45 +109,42 @@ public class ColumnController extends BaseController {
      */
     @PostMapping("/submit")
     public String post(Columnlist columnlist) throws IOException {
-        System.out.println(columnlist.getColname());
         Assert.notNull(columnlist, "参数不完整");
         Assert.state(StringUtils.isNotBlank(columnlist.getColname()), "专栏名不能为空");
         Assert.state(StringUtils.isNotBlank(columnlist.getComment()), "简介不能为空");
         AccountProfile profile = getSubject().getProfile();
-        System.out.println(profile.getId());
+        //设置属性
         columnlist.setAuthorId(profile.getId());
         // 修改时, 验证归属
-//        if(columnlist.getId()>0){
-//            columnlist exist=columnServic.
-//        }
-        columnlist.setCreated(new Date());
-        columnlist.setHot(100);
-        columnlist.setIdxstatus(100);
-        columnService.post(columnlist);
+        if (columnlist.getId() > 0) {
+            Columnlist exist = columnService.findOne(columnlist.getId());
+            Assert.notNull(exist, "专栏不存在");
+            Assert.isTrue(exist.getAuthorId() == profile.getId(), "该专栏不属于你");
+            columnService.updateColumnlist(columnlist.getColname(), columnlist.getComment(), columnlist.getLogo(), columnlist.getClassify(), columnlist.getId());
+        } else {
+            columnlist.setCreated(new Date());
+            columnlist.setHot(100);
+            columnlist.setIdxstatus(100);
+            columnService.post(columnlist);
+        }
         return "redirect:/user/columnlist";
     }
 
-    public static boolean isValidLong(String str) {
-        try {
-            Long.parseLong(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 
     /**
      * 删除专栏
      */
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/delete/{columnid}")
     public @ResponseBody
-    Data deletebyid(@PathVariable Integer id) {
+    Data deletebyid(@PathVariable Integer columnid) {
         Data data = Data.failure("操作失败");
-        if (id != null) {
+        if (columnid != null) {
             AccountProfile up = getSubject().getProfile();
             try {
-                columnService.delete(id, up.getId());
+                columnattrService.deleteByColumnid(columnid, up.getId());
+                columnService.delete(columnid, up.getId());
                 data = Data.success("操作成功", Data.NOOP);
+
             } catch (Exception e) {
                 data = Data.failure(e.getMessage());
             }
@@ -148,7 +153,7 @@ public class ColumnController extends BaseController {
     }
 
     /**
-     * 修改我的专栏
+     * 修改专栏文章列表
      */
     @GetMapping(value = "/artedit/{userid}/{id}/{colname}")
     public String myposts(ModelMap model, @PathVariable long userid, @PathVariable int id, @PathVariable String colname) {
@@ -170,18 +175,18 @@ public class ColumnController extends BaseController {
     }
 
     /**
-     * 保存我的专栏
+     * 专栏文章整理保存
      */
-    @PostMapping("/savecolattr/{id}")
+    @PostMapping("/savecolattr/{columnid}")
     public @ResponseBody
-    String savecollistattr(@RequestParam("data") String data, @PathVariable int id) {
+    String savecollistattr(@RequestParam("data") String data, @PathVariable int columnid) {
         if (data != null && !"".equals(data)) {
             List<ColumnlistAttr> columnlistAttrs = JSONArray.parseArray(data, ColumnlistAttr.class);
-
-            columnattrService.deleteByColumnid(id);
+            AccountProfile up = getSubject().getProfile();
+            columnattrService.deleteByColumnid(columnid, up.getId());
             for (int i = 0; i < columnlistAttrs.size(); i++) {
                 ColumnlistAttr columnlistAttr = columnlistAttrs.get(i);
-                columnlistAttr.setColumnid(id);
+                columnlistAttr.setColumnid(columnid);
                 columnlistAttr.setCreated(new Date());
                 columnlistAttr.setHot(i);
                 columnattrService.post(columnlistAttr);
@@ -191,9 +196,9 @@ public class ColumnController extends BaseController {
     }
 
     /**
-     * 专栏文章view
+     * 专栏文章显示
      */
-    @RequestMapping("/view/columnid/{id}")
+    @RequestMapping("/view/{columnid}/{id}")
     public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
         PostVO view = postService.get(id);
         Assert.notNull(view, "该文章已被删除");
@@ -216,11 +221,12 @@ public class ColumnController extends BaseController {
             }
 
         }
-
+        Columnlist columnlist = columnService.findOne(columnid);
         postService.identityViews(id);
         model.put("view", view);
         model.put("pre", pre);
         model.put("next", next);
+        model.put("columnlist", columnlist);
         model.put("columnlistAttrList", columnlistAttrList);
         return view(Views.COL_VIEW);
     }

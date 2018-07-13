@@ -6,7 +6,19 @@
 
 <@layout title>
 <div class="row main">
-    <div class="col-xs-12 col-md-2 side-left hidden-xs hidden-sm">
+    <div class="col-xs-12 col-md-2 hidden-xs hidden-sm">
+        <div class="side-box">
+            <div class="leftcolumnlist">
+            <#list columnlistAttrList as row >
+                <#if row.csstype=='H3'>
+                   <a target="_top" title="${row.title}" href="/view/${row.columnid}/${row.url}">${row.title}</a>
+                <#else>
+                    <h2 class="leftcolumn-h2"><span class="left-h2">${row.title}</span></h2>
+                </#if>
+            </#list>
+
+            </div>
+        </div>
     </div>
     <div class="col-xs-12 col-md-8 side-left topics-show">
         <!-- view show -->

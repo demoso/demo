@@ -22,12 +22,13 @@
                         </div>
                         <div class="colbox-inline col-sm-3 hidden-xs"
                              style="text-align: right;padding-right: 10px;padding-top: 15px">
-                            <a class="act_editarticle column-atag" href="javascript:void(0);" data-evt="editarticle"
-                               data-id="${row.id}" data-colname="${row.colname}" data-toggle="tooltip" title="管理专栏文章">
+                            <a class="act_editarticle column-atag"
+                               href="${base}/column/artedit/${user.id}/${row.id}/${row.colname}" data-toggle="tooltip"
+                               title="管理专栏文章">
                                 <i class="icon icon-note"></i>
                             </a>
-                            <a class="act_edit column-atag" href="javascript:void(0);" data-evt="edit"
-                               data-id="${row.id}" data-toggle="tooltip" title="修改专栏">
+                            <a class="act_edit column-atag" href="${base}/column/modifying/${row.id}"
+                               data-toggle="tooltip" title="修改专栏">
                                 <i class="icon icon-note"></i>
                             </a>
                             <a class="act_delete column-atag" href="javascript:void(0);" data-evt="trash"
@@ -66,18 +67,6 @@
             }, function () {
 
             });
-        });
-
-        // act_editarticle
-        $('a[data-evt=editarticle]').click(function () {
-            var id = $(this).attr('data-id');
-            var colname = $(this).attr('data-colname');
-            window.location.href = '${base}/column/artedit/${user.id}/' + id + "/ " + colname;
-        });
-        // edit
-        $('a[data-evt=edit]').click(function () {
-            var id = $(this).attr('data-id');
-            window.location.href = '${base}/post/editing?id=' + id;
         });
     })
 </script>
