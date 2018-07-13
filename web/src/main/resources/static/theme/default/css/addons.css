@@ -262,9 +262,18 @@ input.tab-input {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 }
 
+.left-title {
+    margin-top: -4px;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 6px;
+    overflow: hidden;
+    background-color: #ebebeb;
+}
+
 .leftcolumnlist {
     padding: 2px;
-    margin: 0;
+    margin-top: 5px;
     overflow: hidden;
 }
 
@@ -276,18 +285,14 @@ input.tab-input {
     padding: 4px;
     border-bottom: 1px solid #efefef;
     color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-/* 未访问链接 */
-.leftcolumnlist a:link {
-}
 
-/* 已访问链接 */
-.leftcolumnlist a:visited {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    background-color: rgb(150, 185, 125);
-}
+
+
 
 /* 鼠标移动到链接上 */
 .leftcolumnlist a:hover {
@@ -297,4 +302,12 @@ input.tab-input {
 /* 鼠标点击时 */
 .leftcolumnlist a:active {
     font-weight: bold;
+}
+
+.left-col-img {
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

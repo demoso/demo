@@ -202,7 +202,8 @@ public class ColumnController extends BaseController {
     public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
         PostVO view = postService.get(id);
         Assert.notNull(view, "该文章已被删除");
-
+        Columnlist columnlist = columnService.findOne(columnid);
+        Assert.notNull(columnlist, "该专栏已被删除");
         ColumnlistAttr pre = null;
         ColumnlistAttr next = null;
         int next_state = 0;
@@ -221,8 +222,9 @@ public class ColumnController extends BaseController {
             }
 
         }
-        Columnlist columnlist = columnService.findOne(columnid);
+
         postService.identityViews(id);
+        model.put("id", id);
         model.put("view", view);
         model.put("pre", pre);
         model.put("next", next);
