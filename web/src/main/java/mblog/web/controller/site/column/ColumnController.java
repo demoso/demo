@@ -202,12 +202,59 @@ public class ColumnController extends BaseController {
     public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
         PostVO view = postService.get(id);
         Assert.notNull(view, "该文章已被删除");
+
         Columnlist columnlist = columnService.findOne(columnid);
         Assert.notNull(columnlist, "该专栏已被删除");
+
+        List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(columnid);
+        Assert.notNull(columnlistAttrList, "该专栏暂时无文章");
+
         ColumnlistAttr pre = null;
         ColumnlistAttr next = null;
         int next_state = 0;
+        for (int i = 0; i < columnlistAttrList.size(); i++) {
+            long cur_articleid = columnlistAttrList.get(i).getUrl();
+            if (next_state == 1) {
+                next = columnlistAttrList.get(i);
+                break;
+            }
+            if (cur_articleid == id) {
+                next_state = 1;
+            }
+            if (cur_articleid != id) {
+                pre = columnlistAttrList.get(i);
+            }
+
+        }
+
+        postService.identityViews(id);
+        model.put("id", id);
+        model.put("view", view);
+        model.put("pre", pre);
+        model.put("next", next);
+        model.put("columnlist", columnlist);
+        model.put("columnlistAttrList", columnlistAttrList);
+        return view(Views.COL_VIEW);
+    }
+
+    /**
+     * 专栏文章显示
+     */
+    @RequestMapping("/view/{columnid}")
+    public String columnidview(@PathVariable int columnid, ModelMap model) {
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(columnid);
+        Assert.notNull(columnlistAttrList, "该专栏暂时无文章");
+
+        long id = columnlistAttrList.get(0).getUrl();
+        PostVO view = postService.get(id);
+        Assert.notNull(view, "该文章已被删除");
+
+        Columnlist columnlist = columnService.findOne(columnid);
+        Assert.notNull(columnlist, "该专栏已被删除");
+
+        ColumnlistAttr pre = null;
+        ColumnlistAttr next = null;
+        int next_state = 0;
         for (int i = 0; i < columnlistAttrList.size(); i++) {
             long cur_articleid = columnlistAttrList.get(i).getUrl();
             if (next_state == 1) {
