@@ -105,6 +105,11 @@
         <!-- /view show -->
     </div>
     <div class="col-xs-12 col-md-2 right-box hidden-xs hidden-sm">
+        <div class="right-title">
+            <a href="javascript:void(0);">
+                <span id="col-title"><i class="fa fa-th-list"></i> 分类导航</span>
+            </a>
+        </div>
         <div class="side-right-box">
             <div class="side-right-list">
                 <ul>
@@ -211,10 +216,8 @@
 <script type="text/javascript">
     $(function () {
         $(".side-right-list > ul > li").hover(function () {
-            $(this).addClass("selected");
             $(this).children("ul").show();
         }, function () {
-            $(this).removeClass("selected");
             $(this).children("ul").hide();
         })
     })

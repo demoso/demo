@@ -270,6 +270,7 @@ input.tab-input {
     overflow: hidden;
     background-color: #F7F7F7;
     border-radius: 2px;
+    font-size: 16px;
 }
 
 /*#col-title {*/
@@ -287,7 +288,7 @@ input.tab-input {
     text-decoration: none;
     display: block;
     padding: 4px;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 2px solid #fff;
     color: #000;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -358,6 +359,315 @@ input.tab-input {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.right-title {
+    background-color: #F7F7F7;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+}
+
+/********************************************************************************************/
+
+.demoso-content-view {
+    padding: 0 0 10px 0;
+    font: 13px Verdana, Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    color: #000;
+    outline: none;
+    word-wrap: break-word;
+}
+
+.demoso-content-view h1 {
+    font-size: 20px;
+}
+
+.demoso-content-view h2 {
+    font-size: 16px;
+}
+
+.demoso-content-view h1, .demoso-content-view h2, .demoso-content-view h3, .demoso-content-view h4, .demoso-content-view h5, .demoso-content-view h6 {
+    font-family: "微软雅黑";
+    margin: 20px 0 10px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.7;
+}
+
+.demoso-content-view hr {
+    display: block;
+    height: 0px;
+    border: 0;
+    border-top: 1px solid #aaa;
+    margin: 15px 0;
+    padding: 0;
+}
+
+.demoso-content-view p {
+    word-wrap: break-word;
+    margin: 0 0 5px;
+    color: #000;
+    line-height: 1.7;
+}
+
+.demoso-content-view code {
+    display: inline-block;
+    padding: 0 4px;
+    margin: 0 5px;
+    background-color: #f9f2f4;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #003E3E;
+    font-family: Consolas, "Courier New", Courier, monospace;
+}
+
+.demoso-content-view .example {
+    background-color: #EFEFEF;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #DDD;
+    margin: 10px 0;
+    padding: 10px 15px;
+    max-width: 700px;
+}
+
+.demoso-content-view h2.example, .demoso-content-view h2.example_head {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #005757;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.example_code, .demoso-content-view .example_result {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Consolas, "Courier New", Courier, monospace;
+    line-height: 1.7;
+}
+
+.demoso-content-view a.tryitbtn, .demoso-content-view a.showbtn, .demoso-content-view a.playitbtn {
+    display: inline-block;
+    padding: 5px;
+    font-size: 13px;
+    background-color: #00CACA;
+    color: #FFF;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.demoso-content-view a {
+    color: #007979;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.demoso-content-view span.new {
+    float: right;
+    color: #fff;
+    background-color: #009393;
+    padding-left: 1px;
+    padding-right: 1px;
+    border: 1px solid #fff;
+    outline: 1px solid #00AEAE;
+    line-height: 16px;
+}
+
+.demoso-content-view table.reference, table.tecspec {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.demoso-content-view table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 15px 0;
+}
+
+.demoso-content-view table th {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2px 4px;
+}
+
+.demoso-content-view table.reference tr:nth-child(2n+1) {
+    background-color: #EFEFEF;
+}
+
+.demoso-content-view table.reference th {
+    background-color: #bdbdbd;
+    border: 1px solid #bdbdbd;
+    border-bottom: none;
+    color: #FFF;
+    font-size: 14px;
+    padding: 3px;
+    vertical-align: top;
+    text-align: left;
+    font-weight: bold;
+}
+
+.demoso-content-view table.reference td {
+    border: 1px solid #DDD;
+    padding: 7px 5px;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.demoso-content-view table td {
+    min-width: 40px;
+    height: 30px;
+    border: 1px solid #ccc;
+    vertical-align: top;
+    padding: 2px 4px;
+    box-sizing: border-box;
+}
+
+.demoso-content-view pre code {
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border-radius: 0;
+    color: #333;
+}
+
+.demoso-content-view pre, .demoso-content-view .code {
+    width: auto;
+    max-width: 700px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    word-wrap: break-word !important;
+    /* white-space: pre-wrap !important;*/
+    padding: 10px 5px;
+    margin: 15px 0;
+    display: block;
+    line-height: 1.7;
+    background: #efefef;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Consolas, "Courier New", Courier, monospace;
+    /* white-space: pre;*/
+    word-wrap: normal;
+    overflow-x: auto;
+    border: 1px solid #DDD;
+}
+
+.demoso-content-view ul {
+    list-style: disc outside none;
+    margin: 10px 0;
+    padding: 0 0 0 30px;
+    line-height: 1.7;
+}
+
+.demoso-content-view li {
+    list-style-type: inherit;
+}
+
+.demoso-content-view table.lamp {
+    width: 100%;
+    padding: 0px;
+    border: 1px solid #DDD;
+}
+
+.demoso-content-view table.lamp th {
+    color: #666;
+    background-color: #FFF;
+    padding: 10px 5px 10px 10px;
+}
+
+.demoso-content-view table.lamp td {
+    padding: 4px 10px 4px 0px;
+    background-color: #FFF;
+    border: none;
+    vertical-align: middle;
+}
+
+.demoso-content-view .hl-default {
+    color: #000
+}
+
+.demoso-content-view .hl-code {
+    color: Gray
+}
+
+.demoso-content-view .hl-brackets {
+    color: Olive
+}
+
+.demoso-content-view .hl-comment {
+    color: #a50
+}
+
+.demoso-content-view .hl-quotes {
+    color: #8b0000
+}
+
+.demoso-content-view .hl-string {
+    color: #a11
+}
+
+.demoso-content-view .hl-identifier {
+    color: #05a
+}
+
+.demoso-content-view .hl-builtin {
+    color: Teal
+}
+
+.demoso-content-view .hl-reserved {
+    color: Green
+}
+
+.demoso-content-view .hl-inlinedoc {
+    color: #00f
+}
+
+.demoso-content-view .hl-var {
+    color: #00008b
+}
+
+.demoso-content-view .hl-url {
+    color: #00f
+}
+
+.demoso-content-view .hl-special {
+    color: Navy
+}
+
+.demoso-content-view .hl-number {
+    color: Maroon
+}
+
+.demoso-content-view .hl-inlinetags {
+    color: #00f
+}
+
+.demoso-content-view .hl-main {
+    background-color: #fff;
+    font-family: "Courier New", monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word
+}
+
+.demoso-content-view .hl-gutter {
+    background-color: #999;
+    color: #fff
+}
+
+.demoso-content-view .hl-table {
+    font-family: courier;
+    font-size: 12px;
+    border: solid 1px #d3d3d3
 }
 
 
