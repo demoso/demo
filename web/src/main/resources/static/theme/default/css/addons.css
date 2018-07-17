@@ -268,13 +268,13 @@ input.tab-input {
     margin-right: -4px;
     padding: 6px 6px 6px 12px;
     overflow: hidden;
-    background-color: #505050;
+    background-color: #F7F7F7;
     border-radius: 2px;
 }
 
-#col-title {
-    color: #fff;
-}
+/*#col-title {*/
+/*color: #fff;*/
+/*}*/
 .leftcolumnlist {
     padding: 2px;
     margin-top: 5px;
@@ -303,46 +303,39 @@ input.tab-input {
     font-weight: bold;
 }
 
+
+
+/*right-box*/
 .right-box {
     padding-left: 0px;
     padding-right: 23px;
     margin-left: -5px;
 }
 
-/*right-box*/
-.sidebar-box {
+.side-right-box {
     border-radius: 2px;
     background-color: #fff;
+    padding: 8px 8px 1px 8px;
 }
 
-.sidebar-tree .double-li {
-    width: 300px;
-}
-
-.sidebar-tree .double-li li {
-    width: 44%;
-    line-height: 1.5em;
-    border-bottom: 1px solid #ccc;
-    float: left;
-    display: inline;
-}
-
-.sidebar-tree ul li {
-    height: 26px;
-    line-height: 26px;
-    padding: 5px 2px;
+.side-right-list > ul > li {
+    height: 28px;
     position: relative;
-    vertical-align: middle;
-    cursor: pointer;
     display: block;
-    border-bottom: 1px solid #fff;
-    background-image: none;
-    margin: 0 0 0 1em;
+    border-bottom: 2px solid #fff;
+    background-color: #F8F8F8;
 }
 
-.sidebar-tree ul li ul {
+.side-right-list .item-box {
+    margin-left: -40px;
+    text-align: center;
+}
+
+.side-right-list .hidden-item {
+    padding: 4px 2px 4px 2px;
+    width: 300px;
     position: absolute;
-    background: #f6f4f0;
+    background: #F8F8F8;
     right: 100%;
     top: 0;
     display: none;
@@ -352,3 +345,19 @@ input.tab-input {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.side-right-list .hidden-item li {
+    width: 47%;
+    padding: 6px 4px 6px 4px;
+    border-bottom: 1px solid #fff;
+    font-size: 13px;
+    float: left;
+    display: inline;
+    margin-left: 4px;
+    margin-right: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
