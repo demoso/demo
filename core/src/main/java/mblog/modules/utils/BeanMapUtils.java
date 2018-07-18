@@ -17,6 +17,8 @@ import mblog.modules.blog.entity.Comment;
 import mblog.modules.blog.entity.Favor;
 import mblog.modules.blog.entity.Feeds;
 import mblog.modules.blog.entity.Post;
+import mblog.modules.code.data.Code;
+import mblog.modules.code.entity.CodePO;
 import mblog.modules.user.data.AccountProfile;
 import mblog.modules.user.data.NotifyVO;
 import mblog.modules.user.data.UserVO;
@@ -67,6 +69,12 @@ public class BeanMapUtils {
 			BeanUtils.copyProperties(po, d, POST_IGNORE_LIST);
 		}
 		return d;
+	}
+
+	public static Code copy(CodePO po) {
+		Code ret = new Code();
+		BeanUtils.copyProperties(po, ret);
+		return ret;
 	}
 
 	public static FeedsVO copy(Feeds po) {

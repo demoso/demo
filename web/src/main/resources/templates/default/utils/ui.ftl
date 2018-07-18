@@ -37,6 +37,104 @@
 </html>
 </#macro>
 
+<#---------------------------------- codelayout ---------------------------------->
+<#macro codelayout title keywords description>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
+    <![endif]-->
+<#--<meta name="baidu-site-verification" content="2nXjznVkpe" />-->
+
+    <title>${title?default(site_name)}</title>
+    <meta name="keywords" content="demoso, ${keywords?default(site_keywords)}">
+    <meta name="description" content="${description?default(site_description)}">
+
+    <#include "/default/inc/include.ftl"/>
+
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" media='all' href="${base}/dist/vendors/codemirror/lib/codemirror.css">
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/css/css.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/javascript/javascript.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/xml/xml.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/clike/clike.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/php/php.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/addon/edit/closetag.js"></script>
+    <script type="text/javascript" src="${base}/dist/vendors/codemirror/addon/edit/closebrackets.js"></script>
+
+    <style>
+        .container {
+            width: 100%;
+        }
+
+        .CodeMirror {
+            font-size: 12px;
+            height: 600px;
+        }
+
+        #textareaCode {
+            height: 600px;
+        }
+
+        #iframeResult {
+            border: 0 !important;
+            min-width: 100px;
+            width: 100%;
+            height: 600px;
+            background-color: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+            #textareaCode {
+                height: 300px;
+            }
+
+            .CodeMirror {
+                font-size: 12px;
+                height: 300px;
+            }
+
+            #iframeResult {
+                height: 300px;
+            }
+
+            .form-inline {
+                padding: 6px 0 2px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- header -->
+    <#include "/default/inc/header.ftl"/>
+<!-- /header -->
+
+<!-- content -->
+<div class="wrap">
+    <!-- Main -->
+    <div class="container">
+        <div class="row">
+            <div class="main clearfix">
+                <div class="col-xs-12 col-md-12">
+                   <#nested>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /content -->
+
+<!-- footer -->
+    <#include "/default/inc/footer.ftl"/>
+
+</body>
+</html>
+</#macro>
+<#---------------------------------- end codelayout ---------------------------------->
 
 <#-- 用户头像显示 -->
 <#macro showAva avatar clazz>

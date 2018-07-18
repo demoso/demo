@@ -58,4 +58,8 @@ public interface Views {
 	String USER_COLLIST = "/user/column_list";
 	String COl_ARTICLE = "/column/column_article";
 	String COL_VIEW = "/column/column_view";
+    String TOOLS_CODEVIEW = "/tools/codeview";
+    String TOOLS_CODELIST = "/tools/codelist";
+    String TOOLS_CODERUN = "/tools/coderun";
+    String TOOLS_UPDATEVIEW = "/tools/updateview";
 }
