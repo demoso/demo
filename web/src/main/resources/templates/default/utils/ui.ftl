@@ -57,6 +57,7 @@
 
     <script type="text/javascript" src="${base}/dist/vendors/codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" media='all' href="${base}/dist/vendors/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" media='all' href="${base}/dist/vendors/codemirror/theme/dracula.css"/>
     <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/htmlmixed/htmlmixed.js"></script>
     <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/css/css.js"></script>
     <script type="text/javascript" src="${base}/dist/vendors/codemirror/mode/javascript/javascript.js"></script>
@@ -71,21 +72,77 @@
             width: 100%;
         }
 
+        .footer {
+            background: #303030;
+        }
+
+        .wrap {
+            position: relative;
+            padding-top: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            background-color: #303030;
+            z-index: 100;
+        }
         .CodeMirror {
             font-size: 12px;
-            height: 600px;
+            height: 840px;
         }
 
         #textareaCode {
-            height: 600px;
+            height: 840px;
         }
 
         #iframeResult {
             border: 0 !important;
             min-width: 100px;
             width: 100%;
-            height: 600px;
+            height: 840px;
             background-color: #fff;
+        }
+
+        .LeftPane {
+            position: relative;
+            float: left;
+            height: 100%;
+            width: 30%;
+            min-width: 10%;
+            max-width: 90%;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .handler {
+            position: absolute;
+            top: 27px;
+            width: 5px;
+            height: 840px;
+            right: -1px;
+            background-color: #222;
+            z-index: 88;
+            cursor: col-resize;
+        }
+
+        .RightPane {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            margin-right: 10px;
+
+        }
+
+        .zz {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            right: 0;
+            z-index: 50;
+            display: none;
+        }
+
+        .pull-right {
+            margin-right: 10px;
         }
 
         @media screen and (max-width: 768px) {
@@ -112,7 +169,43 @@
 <!-- header -->
     <#include "/default/inc/header.ftl"/>
 <!-- /header -->
-
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    请输入代码标题和概要说明【登录后才能提交成功】
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">标题：</label>
+                    <input type="text" class="form-control" name="title" maxlength="32"
+                           data-required>
+                </div>
+                <div class="form-group">
+                    <label for="name">说明：</label>
+                    <textarea class="form-control" name="summary" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="name">标签：</label>
+                    <input type="hidden" name="tags" id="fieldTags">
+                    <ul id="tags"></ul>
+                    <p class="help-block" style="font-size: 12px;">添加相关标签，用逗号或空格分隔 (最多4个).</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <!-- content -->
 <div class="wrap">
     <!-- Main -->

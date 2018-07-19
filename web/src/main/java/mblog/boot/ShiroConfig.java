@@ -17,7 +17,6 @@ import org.apache.shiro.web.servlet.ShiroHttpSession;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -157,6 +156,7 @@ public class ShiroConfig {
         hashMap.put("/user*", "authc");
         hashMap.put("/user/**", "authc");
         hashMap.put("/post/**", "authc");
+        hashMap.put("/codesave/**", "authc");
 
         hashMap.put("/admin", "authc,perms[admin]");
         hashMap.put("/admin/**", "authc,perms[admin]");
