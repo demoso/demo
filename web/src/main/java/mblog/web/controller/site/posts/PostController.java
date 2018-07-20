@@ -5,10 +5,11 @@ package mblog.web.controller.site.posts;
 
 import mblog.base.data.Data;
 import mblog.base.lang.Consts;
-import mblog.modules.user.data.AccountProfile;
 import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.service.ChannelService;
+import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.user.data.AccountProfile;
 import mblog.web.controller.BaseController;
 import mblog.web.controller.site.Views;
 import org.apache.commons.lang3.StringUtils;
@@ -32,6 +33,8 @@ public class PostController extends BaseController {
 	@Autowired
 	private PostService postService;
 	@Autowired
+	private ClassifyService classifyService;
+	@Autowired
 	private ChannelService channelService;
 
 	/**
@@ -41,9 +44,8 @@ public class PostController extends BaseController {
 	@GetMapping("/editing")
 	public String view(Long id, ModelMap model) {
 		model.put("channels", channelService.findAll(Consts.STATUS_NORMAL));
-
+		AccountProfile profile = getSubject().getProfile();
 		if (null != id && id > 0) {
-			AccountProfile profile = getSubject().getProfile();
 			PostVO view = postService.get(id);
 
 			Assert.notNull(view, "该文章已被删除");
@@ -52,6 +54,8 @@ public class PostController extends BaseController {
 		}
 
 		model.put("channels", channelService.findAll(Consts.STATUS_NORMAL));
+		model.put("classify", classifyService.findByAuthorIdOrderByCreatedDesc(0l));
+		model.put("myclassify", classifyService.findByAuthorIdOrderByCreatedDesc(profile.getId()));
 		return view(Views.ROUTE_POST_EDITING);
 	}
 

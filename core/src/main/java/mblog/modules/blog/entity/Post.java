@@ -10,9 +10,6 @@
 package mblog.modules.blog.entity;
 
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.*;
 
 import javax.persistence.*;
@@ -61,13 +58,22 @@ public class Post implements Serializable {
 	/**
 	 * 预览图
 	 */
-	private String thumbnail;
+    @Column(name = "thumbnail", length = 64)
+    private String thumbnail;
 
 	/**
 	 * 标签, 多个逗号隔开
 	 */
 	@Field
+    @Column(name = "tags", length = 64)
 	private String tags;
+
+    /**
+     * 文章分类, 多个逗号隔开
+     */
+    @Field
+    @Column(name = "classify", length = 128)
+    private String classify;
 
 	@Field
 	@NumericField
@@ -143,9 +149,17 @@ public class Post implements Serializable {
 		return tags;
 	}
 
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getClassify() {
+        return classify;
+    }
+
+    public void setClassify(String classify) {
+        this.classify = classify;
+    }
 
 	public Date getCreated() {
 		return created;
