@@ -54,8 +54,8 @@ public class PostController extends BaseController {
 		}
 
 		model.put("channels", channelService.findAll(Consts.STATUS_NORMAL));
-		model.put("classify", classifyService.findByAuthorIdOrderByCreatedDesc(0l));
-		model.put("myclassify", classifyService.findByAuthorIdOrderByCreatedDesc(profile.getId()));
+		model.put("classifys", classifyService.findByAuthorIdOrderByCreatedDesc(0l));
+		model.put("myclassifys", classifyService.findByAuthorIdOrderByCreatedDesc(profile.getId()));
 		return view(Views.ROUTE_POST_EDITING);
 	}
 

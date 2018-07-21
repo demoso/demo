@@ -3,11 +3,12 @@
 
 
 <div class="row">
-    <div class="col-xs-12 col-md-3">
+    <div class="col-xs-12 col-md-2">
      <#include "/default/column/left.ftl"/>
     </div>
-    <div class="col-xs-12 col-md-9">
-        <form class="form" action="${base}/post/submit" method="post" enctype="multipart/form-data">
+    <div class="col-xs-12 col-md-8">
+        <form class="form-horizontal" role="form" action="${base}/post/submit" method="post"
+              enctype="multipart/form-data">
             <div id="message"></div>
             <#if view??>
                 <input type="hidden" name="id" value="${view.id}"/>
@@ -18,23 +19,74 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="title" maxlength="128" data-required value="${view.title}" placeholder="请输入标题">
             </div>
-            <div class="form-group">
-                <select class="form-control" name="channelId" data-required>
-                    <option value="">请选择栏目</option>
-                    <#list channels as row>
-                        <option value="${row.id}" <#if (view.channelId == row.id)> selected </#if>>${row.name}</option>
-                    </#list>
-                </select>
-            </div>
+
             <div class="form-group">
                 <#include "/default/channel/editor/ueditor.ftl"/>
             </div>
-            <div class="panel panel-default corner-radius help-box">
-                <div class="panel-body">
-                    <span>添加相关标签，用逗号或空格分隔 (最多4个)</span><input type="hidden" name="tags" id="fieldTags" value="${view.tags}" placeholder="添加相关标签，用逗号或空格分隔 (最多4个)">
-                    <ul id="tags"></ul>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right">选择栏目：</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="channelId" data-required>
+                        <option value="">请选择栏目</option>
+                        <#list channels as row>
+                            <option value="${row.id}" <#if (view.channelId == row.id)>
+                                    selected </#if>>${row.name}</option>
+                        </#list>
+                    </select>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right">文章类型：</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="classify" data-required>
+                        <option value="">请选择文章分类</option>
+                            <#list classifys as row>
+                             <option value="${row.classname}">${row.classname}</option>
+                            </#list>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right">个人分类：</label>
+                <div class="col-sm-8">
+                    <input style="display: none" id="inputclassify"
+                           onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\ ]/g,'')"
+                           onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\ ]/g,'')"
+                           oncontextmenu="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\ ]/g,'')">
+                    <a href="javascript:void(0);" id="addmyclassify">添加新分类</a>
+
+                    <div id="classify-box">
+                        <#list myclassifys as row>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="classifycheck" id="inlineCheckbox${row.id}"
+                                       value="${row.classname}"> ${row.classname}
+                            </label>
+                        </#list>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right">文章标签：</label>
+                <div class="col-sm-8">
+                    <input type="hidden" name="tags" id="fieldTags">
+                    <ul id="tags"></ul>
+                    <p class="help-block" style="font-size: 12px;">添加相关标签，用逗号或空格分隔 (最多4个).</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right">访问权限：</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="privacy">
+                        <option value="0">公开</option>
+                        <option value="1">私密</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" style="padding-left: 30px; padding-right: 30px;">提交</button>
@@ -49,5 +101,18 @@
 seajs.use('post', function (post) {
 	post.init();
 });
+$(function () {
+    $("#addmyclassify").click(function () {
+        $("#inputclassify").show();
+    });
+
+    $("#inputclassify").blur(function () {
+        var classnme = $("#inputclassify").val();
+        $("#classify-box").append('<label class="checkbox-inline"><input type="checkbox" name="classifycheck"  value="' + classnme + '" checked> ' + classnme + '</label>');
+        $("#inputclassify").hide();
+        $("#inputclassify").val("");
+    });
+});
+
 </script>
 </@layout>

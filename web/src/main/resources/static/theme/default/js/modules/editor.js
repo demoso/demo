@@ -16,7 +16,7 @@ define(function(require, exports, module) {
                 selector: "#content",
                 theme: 'modern',
                 upload_image_url: window.app.base + "/post/upload", //配置的上传图片的路由
-                height: 400,
+                height: 770,
                 plugins: [
                     'fullpage advlist autolink autosave charmap lists link image print anchor codesample',
                     'searchreplace visualblocks code fullscreen textcolor colorpicker textpattern uploadimage',
