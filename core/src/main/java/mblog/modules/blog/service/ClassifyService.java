@@ -24,4 +24,6 @@ public interface ClassifyService {
     Classify getById(int id);
 
     void delete(int id);
+
+    void save(Classify classify);
 }

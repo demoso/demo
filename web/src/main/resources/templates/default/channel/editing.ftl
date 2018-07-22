@@ -42,7 +42,8 @@
                     <select class="form-control" name="classify" data-required>
                         <option value="">请选择文章分类</option>
                             <#list classifys as row>
-                             <option value="${row.classname}">${row.classname}</option>
+                             <option value="${row.classname}" <#if (view.classify == row.classname)>
+                                     selected </#if>>${row.classname}</option>
                             </#list>
                     </select>
                 </div>
@@ -60,8 +61,7 @@
                     <div id="classify-box">
                         <#list myclassifys as row>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="classifycheck" id="inlineCheckbox${row.id}"
-                                       value="${row.classname}"> ${row.classname}
+                                <input type="checkbox" name="myclassify[]" value="${row.classname}"> ${row.classname}
                             </label>
                         </#list>
                     </div>
@@ -108,9 +108,14 @@ $(function () {
 
     $("#inputclassify").blur(function () {
         var classnme = $("#inputclassify").val();
-        $("#classify-box").append('<label class="checkbox-inline"><input type="checkbox" name="classifycheck"  value="' + classnme + '" checked> ' + classnme + '</label>');
-        $("#inputclassify").hide();
-        $("#inputclassify").val("");
+        if (classnme != "") {
+            $.post("/post/classify", {classname: classnme}, function () {
+                $("#classify-box").append('<label class="checkbox-inline"><input type="checkbox" name="myclassify[]"  value="' + classnme + '" checked> ' + classnme + '</label>');
+                $("#inputclassify").hide();
+                $("#inputclassify").val("");
+            });
+        }
+
     });
 });
 

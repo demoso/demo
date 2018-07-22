@@ -69,10 +69,17 @@ public class Post implements Serializable {
 	private String tags;
 
     /**
+     * 标签, 多个逗号隔开
+     */
+    @Field
+    @Column(name = "myclassifys", length = 128)
+    private String myclassifys;
+
+    /**
      * 文章分类, 多个逗号隔开
      */
     @Field
-    @Column(name = "classify", length = 128)
+    @Column(name = "classify", length = 32)
     private String classify;
 
 	@Field
@@ -151,6 +158,14 @@ public class Post implements Serializable {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getMyclassifys() {
+        return myclassifys;
+    }
+
+    public void setMyclassifys(String myclassifys) {
+        this.myclassifys = myclassifys;
     }
 
     public String getClassify() {

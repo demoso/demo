@@ -44,4 +44,10 @@ public class ClassifyServiceImpl implements ClassifyService {
         classifyDao.delete(id);
     }
 
+    @Override
+    @Transactional
+    public void save(Classify classify) {
+        classifyDao.save(classify);
+    }
+
 }

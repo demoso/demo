@@ -6,6 +6,7 @@ package mblog.web.controller.site.posts;
 import mblog.base.data.Data;
 import mblog.base.lang.Consts;
 import mblog.modules.blog.data.PostVO;
+import mblog.modules.blog.entity.Classify;
 import mblog.modules.blog.service.ChannelService;
 import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.PostService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 文章操作
@@ -65,10 +67,24 @@ public class PostController extends BaseController {
 	 * @return
 	 */
 	@PostMapping("/submit")
-	public String post(PostVO post,  @RequestParam(value = "file", required=false) MultipartFile file) throws IOException {
+	public String post(PostVO post, @RequestParam(value = "file", required = false) MultipartFile file, @RequestParam(value = "myclassify[]", required = false) String[] myclassify) throws IOException {
 		Assert.notNull(post, "参数不完整");
 		Assert.state(StringUtils.isNotBlank(post.getTitle()), "标题不能为空");
 		Assert.state(StringUtils.isNotBlank(post.getContent()), "内容不能为空");
+
+		if (myclassify != null) {
+			String str = "";
+			for (int i = 0; i < myclassify.length; i++) {
+				if (i == 0) {
+					str = myclassify[i];
+				} else {
+					str = str + "," + myclassify[i];
+				}
+			}
+			post.setMyclassifys(str);
+			System.out.println("strclassify:" + str);
+		}
+
 
 		AccountProfile profile = getSubject().getProfile();
 		post.setAuthorId(profile.getId());
@@ -120,4 +136,15 @@ public class PostController extends BaseController {
 		return data;
 	}
 
+	@PostMapping("/classify")
+	public @ResponseBody
+	String saveclassify(@RequestParam("classname") String classname) throws IOException {
+		Classify classify = new Classify();
+		AccountProfile profile = getSubject().getProfile();
+		classify.setAuthorId(profile.getId());
+		classify.setClassname(classname);
+		classify.setCreated(new Date());
+		classifyService.save(classify);
+		return "ok";
+	}
 }
