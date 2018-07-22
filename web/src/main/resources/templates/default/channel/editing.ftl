@@ -61,7 +61,9 @@
                     <div id="classify-box">
                         <#list myclassifys as row>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="myclassify[]" value="${row.classname}"> ${row.classname}
+                                <input type="checkbox" name="myclassify[]"
+                                       value="${row.classname}" <#list view.myclassifysArray as myclassify> <#if (myclassify == row.classname)>
+                                       checked </#if> </#list> > ${row.classname}
                             </label>
                         </#list>
                     </div>

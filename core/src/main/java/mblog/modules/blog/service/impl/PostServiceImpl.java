@@ -310,6 +310,9 @@ public class PostServiceImpl implements PostService {
 			}
 
 			po.setTags(p.getTags());//标签
+			po.setClassify(p.getClassify());//文章分类
+			po.setMyclassifys(p.getMyclassifys());//个人分类
+
 
 			// 保存扩展
 			PostAttribute attr = new PostAttribute();

@@ -12,8 +12,8 @@ package mblog.modules.blog.data;
 import com.alibaba.fastjson.annotation.JSONField;
 import mblog.base.lang.Consts;
 import mblog.modules.blog.entity.Channel;
-import mblog.modules.blog.entity.PostAttribute;
 import mblog.modules.blog.entity.Post;
+import mblog.modules.blog.entity.PostAttribute;
 import mblog.modules.user.data.UserVO;
 import org.apache.commons.lang3.StringUtils;
 
@@ -40,6 +40,14 @@ public class PostVO extends Post implements Serializable {
 		}
 		return null;
 	}
+
+	public String[] getMyclassifysArray() {
+		if (StringUtils.isNotBlank(super.getMyclassifys())) {
+			return super.getMyclassifys().split(Consts.SEPARATOR);
+		}
+		return null;
+	}
+
 
 	public UserVO getAuthor() {
 		return author;
