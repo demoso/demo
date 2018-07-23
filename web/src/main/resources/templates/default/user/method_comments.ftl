@@ -6,48 +6,37 @@
 		<#include "/default/user/left.ftl"/>
     </div>
     <div class="col-xs-12 col-md-9 side-right">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                我的评论
+        <div class="shadow-box">
+            <div class="filter">
+                <div class="alert" style="margin-bottom:0">
+                    <i class="fa fa-tag fa-lg"></i> 我的评论.
+                </div>
             </div>
+            <div class="stream-list p-stream">
+              <#list page.content as row>
+              <div class="stream-item comment-item" el="loop-${row.id}">
+                  <h2 class="title" style="color:#F36C52">我说：${row.content}</h2>
+                  <#if row.post??>
+                      <a href="${base}/view/${row.post.id}" style="font-size: 16px;font:bold">@${row.post.title}</a>
+                  <#else>
+                  <div class="stream-item">文章已删除</div>
+                  </#if>
 
-            <div class="panel-body">
-                <ul class="list-group">
-					<#list page.content as row>
-                        <li class="list-group-item" el="loop-${row.id}">
-							<#if row.post??>
-                                <a href="${base}/view/${row.post.id}" class="remove-padding-left">${row.post.title}</a>
-							<#else>
-                                <a href="javascript:;" class="remove-padding-left">文章已删除</a>
-							</#if>
-                            <span class="meta">
-								<span class="timeago">${timeAgo(row.created)}</span>
-      						</span>
+                  <div class="pull-right hidden-xs" style="position: absolute;right: 20px;bottom: 10px">
+                      <a class="act_delete" href="javascript:void(0);" data-evt="trash" data-id="${row.id}">删除</a>
+                  </div>
 
-							<div class="pull-right hidden-xs">
-								<a class="act" href="javascript:void(0);" data-evt="trash" data-id="${row.id}" data-toggle="tooltip" title="删除评论">
-                                    <i class="icon icon-close"></i>
-                                </a>
-							</div>
-
-                            <div class="reply-body markdown-reply content-body">
-                                <p>${row.content}</p>
-                            </div>
-						</li>
-					</#list>
-
-					<#if page.content?size == 0>
-                        <li class="list-group-item ">
-                            <div class="infos">
-                                <div class="media-heading">该目录下还没有内容!</div>
-                            </div>
-                        </li>
-					</#if>
-                </ul>
+              </div>
+              </#list>
+              <#if page.content?size == 0>
+                <div class="stream-item">
+                    <i class="fa fa-info-circle fa-lg"></i> 还没有内容!
+                </div>
+              </#if>
             </div>
-            <div class="panel-footer">
-				<@pager "user?method=comments", page, 5/>
-            </div>
+        </div>
+        <div class="text-center clr">
+	          <@pager request.requestURI, page, 5/>
         </div>
     </div>
 </div>

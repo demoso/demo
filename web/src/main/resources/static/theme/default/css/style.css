@@ -461,6 +461,7 @@ abbr[data-original-title], abbr[title] {
 }
 
 .side-left {
+
 }
 
 .side-right {
@@ -814,26 +815,6 @@ abbr[data-original-title], abbr[title] {
     color: #bab9bb;
 }
 
-.list-group {
-    margin-bottom: 0px;
-}
-
-.list-group .list-group-item {
-    padding: 0px 15px;
-    border: none;
-    margin-bottom: 0px;
-    border-bottom: 1px solid #f2f2f2;
-}
-
-.list-group .list-group-item:first-child {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-}
-
-.list-group-item.media .infos {
-    margin-top: 16px;
-    margin-left: 66px;
-}
 
 .reply_count_area {
     width: 200px;

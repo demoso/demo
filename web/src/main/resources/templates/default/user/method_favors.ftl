@@ -6,49 +6,78 @@
 		<#include "/default/user/left.ftl"/>
     </div>
     <div class="col-xs-12 col-md-9 side-right">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                我的喜欢
+        <div class="shadow-box">
+            <div class="filter">
+                <div class="alert" style="margin-bottom:0">
+                    <i class="fa fa-tag fa-lg"></i> 我的收藏
+                </div>
             </div>
+            <div class="stream-list p-stream">
+              <#list page.content as target>
+                  <#if target.post??>
+                      <#assign row = target.post>
+                  <div class="stream-item" id="loop-${row.id}">
+                      <div class="article-title">
+                          <a href="${base}/view/${row.id}">
+                              <span class="label label-success">文</span>
+                              <span class="h2-title">${row.title!}</span>
+                          </a>
+                      </div>
+                      <div class="summary">
+                          <a href="${base}/view/${row.id}">
+                              <div class="excerpt wordbreak">${row.summary!}</div>
+                          </a>
+                      </div>
+                      <div class="p-rank clearfix">
+                          <div class="users">
+                              <a href="${base}/ta/${row.author.id}">
+                                  <div class="ava">
+                                    <@showAva row.author.avatar "img-circle"/>
+                                  </div>
+                                  <div class="info">
+                                      <span><small>${row.author.name}</small></span>
+                                  </div>
+                              </a>
 
-            <div class="panel-body">
-                <ul class="list-group">
-					<#list page.content as row>
-                        <li class="list-group-item" id="loop-${target.id}">
-							<#if row.post??>
-                                <a href="${base}/view/${row.post.id}" class="remove-padding-left">${row.post.title}</a>
-							<#else>
-                                <a href="javascript:;" class="remove-padding-left">文章已删除</a>
-							</#if>
-                            <span class="meta">
-								<span class="timeago">${timeAgo(row.created)}</span>
-      						</span>
+                              <div class="info">
+                                  <span><time> ${timeAgo(row.created)}</time></span>
+                              </div>
+                              <div class="info">
+                              <#--<i class="fa fa-tag"></i>-->
+                             <#if row.tagsArray??>
+                             <i>标签：</i>
+                             </#if>
+                            <#list  row.tagsArray as tag>
+                              <a class="tag-link" href="${base}/tag/${tag}">${tag}</a>
+                                <#if tag_has_next>
+                                    ,
+                                </#if>
+                            </#list>
+                                  <div class="pull-right hidden-xs" style="position: absolute;right: 10px;bottom: 20px">
+                                      <a class="act_edit" href="javascript:void(0);" data-evt="unfavor"
+                                         data-id="${row.post.id}">取消收藏</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <#else>
+                  <div class="stream-item">文章已删除</div>
+                  </#if>
 
-                            <div class="pull-right hidden-xs">
-                                <a class="act" href="javascript:void(0);" data-evt="unfavor" data-id="${target.id}">
-                                    <i class="icon icon-close"></i>
-								</a>
-                            </div>
 
-                            <div class="reply-body markdown-reply content-body">
-                                <p>${row.content}</p>
-                            </div>
-                        </li>
-					</#list>
-
-					<#if page.content?size == 0>
-                        <li class="list-group-item ">
-                            <div class="infos">
-                                <div class="media-heading">该目录下还没有内容!</div>
-                            </div>
-                        </li>
-					</#if>
-                </ul>
-            </div>
-            <div class="panel-footer">
-				<@pager "user?method=favors", page, 5/>
+              </#list>
+              <#if page.content?size == 0>
+                <div class="stream-item">
+                    <i class="fa fa-info-circle fa-lg"></i> 该标签下没发表过文章!
+                </div>
+              </#if>
             </div>
         </div>
+        <div class="text-center clr">
+	          <@pager request.requestURI, page, 5/>
+        </div>
+
     </div>
 </div>
 <!-- /end -->

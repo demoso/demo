@@ -3,8 +3,9 @@
 
 
 <div class="row">
-    <div class="col-xs-12 col-md-2">
-     <#include "/default/column/left.ftl"/>
+    <div class="col-xs-12 col-md-3">
+    <#--<#include "/default/column/left.ftl"/>-->
+        <#include "/default/user/left.ftl"/>
     </div>
     <div class="col-xs-12 col-md-8">
         <form class="form-horizontal" role="form" action="${base}/post/submit" method="post"
