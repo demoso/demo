@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/column")
 public class ColumnController extends BaseController {
     @Autowired
     private ColumnService columnService;
@@ -40,12 +39,12 @@ public class ColumnController extends BaseController {
     private ColumnattrService columnattrService;
 
 
-    @RequestMapping(value = "/regfrom", method = RequestMethod.GET)
+    @RequestMapping(value = "/column/regfrom", method = RequestMethod.GET)
     public String regfromview() {
         return view(Views.COl_REGFROM);
     }
 
-    @RequestMapping(value = "/modifying/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/column/modifying/{id}", method = RequestMethod.GET)
     public String colmodify(@PathVariable int id, ModelMap model) {
         Columnlist columnlist = columnService.findOne(id);
         model.put("columnlist", columnlist);
@@ -57,7 +56,7 @@ public class ColumnController extends BaseController {
      * @param
      * @return
      */
-    @PostMapping("/logosubmit")
+    @PostMapping("/column/logosubmit")
     public @ResponseBody
     String post(String path, Float x, Float y, Float width, Float height) {
         String deststr = null;
@@ -107,7 +106,7 @@ public class ColumnController extends BaseController {
      * @param
      * @return
      */
-    @PostMapping("/submit")
+    @PostMapping("/column/submit")
     public String post(Columnlist columnlist) throws IOException {
         Assert.notNull(columnlist, "参数不完整");
         Assert.state(StringUtils.isNotBlank(columnlist.getColname()), "专栏名不能为空");
@@ -134,7 +133,7 @@ public class ColumnController extends BaseController {
     /**
      * 删除专栏
      */
-    @RequestMapping("/delete/{columnid}")
+    @RequestMapping("/column/delete/{columnid}")
     public @ResponseBody
     Data deletebyid(@PathVariable Integer columnid) {
         Data data = Data.failure("操作失败");
@@ -155,7 +154,7 @@ public class ColumnController extends BaseController {
     /**
      * 修改专栏文章列表
      */
-    @GetMapping(value = "/artedit/{userid}/{id}/{colname}")
+    @GetMapping(value = "/column/artedit/{userid}/{id}/{colname}")
     public String myposts(ModelMap model, @PathVariable long userid, @PathVariable int id, @PathVariable String colname) {
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(id);
         Set<Long> ids = new HashSet<>();
@@ -177,7 +176,7 @@ public class ColumnController extends BaseController {
     /**
      * 专栏文章整理保存
      */
-    @PostMapping("/savecolattr/{columnid}")
+    @PostMapping("/column/savecolattr/{columnid}")
     public @ResponseBody
     String savecollistattr(@RequestParam("data") String data, @PathVariable int columnid) {
         if (data != null && !"".equals(data)) {
@@ -198,7 +197,7 @@ public class ColumnController extends BaseController {
     /**
      * 专栏文章显示
      */
-    @RequestMapping("/view/{columnid}/{id}")
+    @RequestMapping("/columnview/{columnid}/{id}")
     public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
         PostVO view = postService.get(id);
         Assert.notNull(view, "该文章已被删除");
@@ -240,7 +239,7 @@ public class ColumnController extends BaseController {
     /**
      * 专栏文章显示
      */
-    @RequestMapping("/view/{columnid}")
+    @RequestMapping("/columnview/{columnid}")
     public String columnidview(@PathVariable int columnid, ModelMap model) {
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(columnid);
         Assert.notNull(columnlistAttrList, "该专栏暂时无文章");

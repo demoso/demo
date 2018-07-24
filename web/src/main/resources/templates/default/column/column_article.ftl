@@ -58,7 +58,10 @@
                     </#if>
                     </tbody>
                 </table>
-                <div style="padding-left: 30%;"><input id="submit-but" type="button" value="提交保存&刷新右侧待加入文章"></div>
+                <div style="padding-left: 30%;">
+                    <a class="act_view btn" id="submit-but" href="javascript:void(0);">提交保存&刷新右侧待加入文章</a>
+                    <a class="act_view btn" style="margin-left: 20px" href="${base}/columnview/${id}">查看专栏</a>
+                </div>
             </div>
         </div>
     </div>

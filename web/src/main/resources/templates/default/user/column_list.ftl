@@ -16,7 +16,7 @@
               <#list listcolumn as row>
               <div class="stream-item">
                   <div>
-                      <a href="${base}/column/view/${row.id}">
+                      <a href="${base}/columnview/${row.id}">
                           <img class="li-group-img img-circle" src="${row.logo}"/>
                           <span style="padding-left: 5px;font-size: 18px">${row.colname}</span>
                           <span>${row.comment}</span>

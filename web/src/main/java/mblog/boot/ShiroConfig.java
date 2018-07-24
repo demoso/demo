@@ -157,6 +157,7 @@ public class ShiroConfig {
         hashMap.put("/user/**", "authc");
         hashMap.put("/post/**", "authc");
         hashMap.put("/codesave/**", "authc");
+        hashMap.put("/column/**", "authc");
 
         hashMap.put("/admin", "authc,perms[admin]");
         hashMap.put("/admin/**", "authc,perms[admin]");
