@@ -11,6 +11,7 @@
 define(function(require, exports, module) {
     var plugins = require('plugins');
 	var Authc = require('authc');
+    var loginfresh = require('loginfresh');
 
     var wpexLocalize = {
     		"mobileMenuOpen" : "Click here to navigate",
@@ -47,6 +48,15 @@ define(function(require, exports, module) {
     
 	// 绑定按钮事件
 	var bindClickEvent = function () {
+
+        $('#savecodebtn').click(function () {
+            if (!loginfresh.isAuthced()) {
+                loginfresh.showLogin();
+                return false;
+            }
+            $('#savecodeModal').modal();
+        });
+
 		// Favor
 		$('a[rel=favor]').click(function () {
 			var id = $(this).attr('data-id');

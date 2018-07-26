@@ -9,8 +9,7 @@
                 <label class="inline" style="font-size: 16px;color: #fff;"> 编辑web前端代码:</label>
                 <input id="submitBTN" onclick="submitTryit()" type="button" class="pull-right inline"
                        value="提交运行 &#187;">
-                <input data-toggle="modal" data-target="#myModal" type="button"
-                       class="pull-right inline" value="保存代码">
+                <input id="savecodebtn" type="button" class="pull-right inline" value="保存代码">
             </div>
             <textarea class="form-control" id="textareaCode"
                       name="textareaCode">${ret.content}</textarea>
@@ -21,6 +20,44 @@
             <div id="iframewrapper">
             </div>
         </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="savecodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        请输入代码标题和概要说明
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">标题：</label>
+                        <input type="text" class="form-control" name="title" maxlength="32"
+                               data-required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">说明：</label>
+                        <textarea class="form-control" name="summary" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">标签：</label>
+                        <input type="hidden" name="tags" id="fieldTags">
+                        <ul id="tags"></ul>
+                        <p class="help-block" style="font-size: 12px;">添加相关标签，用逗号或空格分隔 (最多4个).</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
     </div>
 
 </form>

@@ -82,7 +82,7 @@
             margin-top: 0px;
             margin-bottom: 0px;
             background-color: #303030;
-            z-index: 100;
+            /*z-index: 100;*/
         }
         .CodeMirror {
             font-size: 12px;
@@ -169,43 +169,6 @@
 <!-- header -->
     <#include "/default/inc/header.ftl"/>
 <!-- /header -->
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    请输入代码标题和概要说明【登录后才能提交成功】
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="name">标题：</label>
-                    <input type="text" class="form-control" name="title" maxlength="32"
-                           data-required>
-                </div>
-                <div class="form-group">
-                    <label for="name">说明：</label>
-                    <textarea class="form-control" name="summary" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="name">标签：</label>
-                    <input type="hidden" name="tags" id="fieldTags">
-                    <ul id="tags"></ul>
-                    <p class="help-block" style="font-size: 12px;">添加相关标签，用逗号或空格分隔 (最多4个).</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="submit" class="btn btn-primary">提交</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <!-- content -->
 <div class="wrap">
     <!-- Main -->
