@@ -239,7 +239,7 @@ abbr[data-original-title], abbr[title] {
     z-index: 99;
     width: 100%;
     min-height: 50px;
-    border-bottom: 1px solid #f0f0f0;
+    /*border-bottom: 1px solid #f0f0f0;*/
     background: #fff;
     opacity: .97;
 }

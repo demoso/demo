@@ -111,9 +111,11 @@
                         </ul>
                     </li>
 				<#else>
-                    <li><a href="${base}/login" class="btn btn-default btn-sm signup">登录</a></li>
+                    <li class="header_user-li-sign"><a href="${base}/login" class="btn btn-default btn-sm signup">登录</a>
+                    </li>
 
-                    <li><a href="${base}/register" class="btn btn-primary btn-sm signup">注册</a></li>
+                    <li class="header_user-li-sign"><a href="${base}/register"
+                                                       class="btn btn-primary btn-sm signup">注册</a></li>
 				</#if>
 
                 </ul>

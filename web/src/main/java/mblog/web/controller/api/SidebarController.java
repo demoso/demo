@@ -10,10 +10,10 @@
 package mblog.web.controller.api;
 
 import mblog.base.data.Data;
-import mblog.modules.user.data.AccountProfile;
 import mblog.modules.blog.data.PostVO;
-import mblog.modules.user.data.UserVO;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.user.data.AccountProfile;
+import mblog.modules.user.data.UserVO;
 import mblog.modules.user.service.UserService;
 import mblog.web.controller.BaseController;
 import org.apache.commons.lang3.StringUtils;
@@ -44,12 +44,23 @@ public class SidebarController extends BaseController {
 
 	@Autowired
 	private UserService userService;
+
+	@RequestMapping(value = "/profile")
+	public @ResponseBody
+	Data profile() {
+		Data data = Data.failure("失败");
+		AccountProfile up = getSubject().getProfile();
+		if (up != null) {
+			System.out.println(up.getName() + up.getName() + up.getAvatar());
+			data = Data.success("成功", up);
+		}
+		return data;
+	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
 	Data login(String username, String password, ModelMap model) {
 		Data data = Data.failure("操作失败");
-
 		if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
 			return data;
 		}
@@ -62,8 +73,7 @@ public class SidebarController extends BaseController {
 
 		try {
 			SecurityUtils.getSubject().login(token);
-			data = Data.success("登录成功", getSubject().getProfile());
-
+			data = Data.success("登录成功");
 		} catch (Exception e) {
 			if (e instanceof UnknownAccountException) {
 				data.setMessage("用户不存在");
