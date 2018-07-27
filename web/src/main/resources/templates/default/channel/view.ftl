@@ -39,6 +39,15 @@
                 </#list>
             </div>
             <div class="panel-footer operate">
+                <div class="text-center">
+                    <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
+                        <i class="icon icon-like"></i> 喜欢
+                    </a>
+                    <strong id="favors">${view.favors}</strong> 喜欢
+                </div>
+            </div>
+
+            <div class="panel-footer operate">
                 <div class="hidden-xs">
                     <div class="social-share" data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
                 </div>
@@ -84,39 +93,31 @@
         <!-- /view show -->
     </div>
     <div class="col-xs-12 col-md-4 side-right hidden-xs hidden-sm">
-        <ul class="list-group about-user">
-            <li class="list-group-item user-card" >
-                <div class="user-avatar">
-                    <a href="${base}/users/${view.author.id}">
-                        <@showAva view.author.avatar "img-circle"/>
+        <div class="panel panel-default corner-radius panel-user-infos">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user-circle"></i> 用户信息</h3>
+            </div>
+            <div class="panel-body list-body">
+                <div class="right-user ">
+                    <a style="width: 75%;display: inline-block;padding-left: 10px "
+                       href="${base}/users/${view.author.id}">
+                           <@showAva view.author.avatar "img-circle" />
+                        <span class="midspan">${view.author.name}</span>
                     </a>
-                </div>
-                <div class="user-name">
-                    <span>${view.author.name}</span>
-                </div>
-            </li>
 
-            <li class="list-group-item">
-                <a class="btn btn-primary btn-block btn-sm" href="javascript:void(0);" data-id="${view.author.id}" rel="follow"><i class="icon icon-user-follow"></i> 关注</a>
-            </li>
+                    <a class="btn act_follow" href="javascript:void(0);" data-id="${view.author.id}" rel="follow"><i
+                            class="icon icon-user-follow"></i> 关注</a>
 
-            <li class="list-group-item">
-                <div class="user-datas">
+                </div>
+                <div class="about-user-datas">
                     <ul>
                         <li><strong>${view.author.posts}</strong><span>发布</span></li>
-                        <li class="noborder"><strong>${view.author.comments}</strong><span>评论</span></li>
+                        <li><strong>${view.author.comments}</strong><span>评论</span></li>
+                        <li><strong>${view.author.favors}</strong><span>收藏</span></li>
                     </ul>
                 </div>
-            </li>
-            <li class="list-group-item">
-                <div class="text-center">
-                    <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
-                        <i class="icon icon-like"></i> 喜欢
-                    </a>
-                    <strong id="favors">${view.favors}</strong> 喜欢
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
         <#include "/default/inc/right.ftl"/>
     </div>
 </div>
