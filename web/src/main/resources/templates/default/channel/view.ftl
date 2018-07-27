@@ -118,6 +118,20 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-default corner-radius panel-user-classify">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user-circle"></i> 个人分类</h3>
+            </div>
+            <div class="panel-body list-body">
+                <div class="user-classify-data row">
+                        <#list classifys as row>
+                            <div class="col-xs-6 atag">
+                                <a class="text" href="">${row.classname}</a>
+                            </div>
+                        </#list>
+                </div>
+            </div>
+        </div>
         <#include "/default/inc/right.ftl"/>
     </div>
 </div>
