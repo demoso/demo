@@ -112,10 +112,12 @@ $(function () {
     $("#inputclassify").blur(function () {
         var classnme = $("#inputclassify").val();
         if (classnme != "") {
-            $.post("/post/classify", {classname: classnme}, function () {
-                $("#classify-box").append('<label class="checkbox-inline"><input type="checkbox" name="myclassify[]"  value="' + classnme + '" checked> ' + classnme + '</label>');
-                $("#inputclassify").hide();
-                $("#inputclassify").val("");
+            $.post("/post/classify", {classname: classnme}, function (ret) {
+                if (ret && ret.code == 0) {
+                    $("#classify-box").append('<label class="checkbox-inline"><input type="checkbox" name="myclassify[]"  value="' + classnme + '" checked> ' + classnme + '</label>');
+                    $("#inputclassify").hide();
+                    $("#inputclassify").val("");
+                }
             });
         }
 

@@ -9,14 +9,13 @@
 */
 package mblog.web.controller.site.user;
 
+import mblog.base.data.Data;
 import mblog.modules.blog.data.CommentVO;
 import mblog.modules.blog.data.FavorVO;
 import mblog.modules.blog.data.FeedsVO;
 import mblog.modules.blog.data.PostVO;
-import mblog.modules.blog.service.CommentService;
-import mblog.modules.blog.service.FavorService;
-import mblog.modules.blog.service.FeedsService;
-import mblog.modules.blog.service.PostService;
+import mblog.modules.blog.entity.Classify;
+import mblog.modules.blog.service.*;
 import mblog.modules.column.entity.Columnlist;
 import mblog.modules.column.service.ColumnService;
 import mblog.modules.user.data.AccountProfile;
@@ -35,6 +34,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -61,6 +62,8 @@ public class UserController extends BaseController {
 	private NotifyService notifyService;
 	@Autowired
 	private ColumnService columnServic;
+	@Autowired
+	private ClassifyService classifyService;
 
 	/**
 	 * 用户主页
@@ -218,6 +221,41 @@ public class UserController extends BaseController {
 		initUser(model);
 
 		return view(Views.USER_COLLIST);
+	}
+
+	/**
+	 * 我的分类
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "/user/classify")
+	public String userclassify(ModelMap model) {
+		AccountProfile up = getSubject().getProfile();
+		List<Classify> classifys = classifyService.findByAuthorIdOrderByCreatedDesc(up.getId());
+		model.put("classifys", classifys);
+		initUser(model);
+
+		return view(Views.USER_CLASSIFY);
+	}
+
+	/**
+	 * 删除我的分类
+	 *
+	 * @param id
+	 * @return
+	 */
+	@GetMapping(value = "/user/delclassify/{id}")
+	public @ResponseBody
+	Data delclassify(@PathVariable int id) {
+		Data data = Data.failure("操作失败");
+		AccountProfile up = getSubject().getProfile();
+		Classify classify = classifyService.getById(id);
+		if (classify != null && classify.getAuthorId() == up.getId()) {
+			classifyService.delete(id);
+			data = Data.success("操作成功", Data.NOOP);
+		}
+		return data;
 	}
 
 

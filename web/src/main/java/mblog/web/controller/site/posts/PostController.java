@@ -138,13 +138,19 @@ public class PostController extends BaseController {
 
 	@PostMapping("/classify")
 	public @ResponseBody
-	String saveclassify(@RequestParam("classname") String classname) throws IOException {
+	Data saveclassify(@RequestParam("classname") String classname) throws IOException {
+		Data data = Data.failure("操作失败");
 		Classify classify = new Classify();
 		AccountProfile profile = getSubject().getProfile();
 		classify.setAuthorId(profile.getId());
 		classify.setClassname(classname);
 		classify.setCreated(new Date());
-		classifyService.save(classify);
-		return "ok";
+		try {
+			classifyService.save(classify);
+			data = Data.success("操作成功", Data.NOOP);
+		} catch (Exception e) {
+			data = Data.failure(e.getMessage());
+		}
+		return data;
 	}
 }

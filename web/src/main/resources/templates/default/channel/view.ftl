@@ -126,7 +126,7 @@
                 <div class="user-classify-data row">
                         <#list classifys as row>
                             <div class="col-xs-6 atag">
-                                <a class="text" href="">${row.classname}</a>
+                                <a href="">${row.classname}</a>
                             </div>
                         </#list>
                 </div>

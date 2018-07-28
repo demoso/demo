@@ -1,7 +1,7 @@
 <#include "/default/utils/ui.ftl"/>
 
 <@layout "我的专栏">
-<div class="row users-show" xmlns="http://www.w3.org/1999/html">
+<div class="row users-show">
     <div class="col-xs-12 col-md-3">
 		<#include "/default/user/left.ftl"/>
     </div>
