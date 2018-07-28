@@ -269,12 +269,11 @@ abbr[data-original-title], abbr[title] {
 }
 
 .site-header .navbar-nav > li > a:focus, .site-header .navbar-nav > li > a:hover {
-    color: #03a9f4;
-    background-color: transparent;
+    background-color: #A00000;
 }
 
 .site-header .navbar-nav > li.active > a {
-    color: #03a9f4;
+    background-color: #A00000;
 }
 
 .site-header .navbar-button {
