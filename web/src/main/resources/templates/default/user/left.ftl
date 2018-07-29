@@ -25,10 +25,13 @@
                 <span class="navbar-brand">导航</span>
             </div>
         </div>
-        <div id="home-navbar" class="collapse navbar-collapse">
+        <div id="home-navbar" class="collapse navbar-collapse left-user-nav">
             <ul class="list-group user-nav">
                 <li class="list-group-item">
-                    <a href="${base}/user"><i class="icon icon-layers"></i> 动态</a>
+                    <a href="${base}/post/editing"><i class="icon icon-note"></i> 写文章</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
                 </li>
             </ul>
 
@@ -60,6 +63,9 @@
             </ul>
 
             <ul class="list-group user-nav">
+                <li class="list-group-item">
+                    <a href="${base}/user"><i class="icon icon-layers"></i> 动态</a>
+                </li>
                 <li class="list-group-item">
                     <a href="${base}/user?method=notifies">
                         <i class="icon icon-envelope"></i> 通知

@@ -14,11 +14,11 @@
               <#list page.content as row>
                   <@showBlog row/>
               </#list>
-              <#if page.content?size == 0>
-                <div class="stream-item">
-                    <i class="fa fa-info-circle fa-lg"></i> 该标签下没发表过文章!
-                </div>
-              </#if>
+            <#--<#if page.content?size == 0>-->
+            <#--<div class="stream-item">-->
+            <#--<i class="fa fa-info-circle fa-lg"></i> 该标签下没发表过文章!-->
+            <#--</div>-->
+            <#--</#if>-->
             </div>
         </div>
         <div class="text-center clr">

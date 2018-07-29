@@ -281,15 +281,15 @@
 
 <#macro showGroup channel>
 	<#if (channel== 1) >
-    	<span class="label label-danger">推荐</span>
-    <#elseif (channel == 2)>
     	<span class="label label-success">文</span>
+    <#elseif (channel == 2)>
+    	<span class="label label-warning">问</span>
     <#elseif (channel == 3)>
     	<span class="label label-info">图</span>
     <#elseif (channel == 4)>
     	<span class="label label-violet">视频</span>
     <#elseif (channel == 5)>
-    	<span class="label label-warning">问</span>
+    <span class="label label-danger">推荐</span>
     </#if>
 </#macro>
 
@@ -299,7 +299,7 @@
     <div class="stream-item" id="loop-${row.id}">
         <div class="article-title">
             <a href="${base}/view/${row.id}">
-                <span class="label label-success">文</span>
+                 <@showGroup row.channelId/>
                 <span class="h2-title">${row.title!}</span>
             </a>
         </div>

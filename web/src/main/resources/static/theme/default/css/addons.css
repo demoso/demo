@@ -12,24 +12,8 @@
     background-color: #fff;
 }
 
-.stream-list {
-    background-color: #f1f1f1;
-}
 
-.stream-item:hover {
-    transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    /* Firefox 4 */
-    -webkit-transition: all 0.2s;
-    /* Safari 和 Chrome */
-    -o-transition: all 0.2s;
-    background-color: #fff;
-    box-shadow: 0 0px 5px 2px rgba(0, 0, 0, 0.2);
-}
-.p-rank {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+
 .stream-item .summary {
     overflow: hidden;
     padding-top: 10px;
@@ -37,12 +21,12 @@
 }
 .p-stream .stream-item {
     padding: 10px 20px;
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     border-bottom: 1px solid #ebebeb;
     position: relative;
-    background-color: #FFF;
 }
 .p-rank {
+    margin-top: 10px;
     margin-bottom: 15px;
 }
 .p-rank .users .ava {
@@ -76,11 +60,9 @@ img {
 }
 .article-title .h2-title{
     font-size: 18px;
-    font-weight:bold;
     display: inline;
     vertical-align: -2px;
     margin-left: 10px;
-    color: #009688;
 }
 
 .article-title :hover{
@@ -276,9 +258,6 @@ input.tab-input {
     font-size: 16px;
 }
 
-/*#col-title {*/
-/*color: #fff;*/
-/*}*/
 .leftcolumnlist {
     padding: 2px;
     margin-top: 5px;
@@ -796,6 +775,14 @@ a.act_view {
     font-size: 16px;
 }
 
+.left-user-nav .user-nav > li > a:focus, .left-user-nav .user-nav > li > a:hover {
+    background-color: #fff;
+}
+
+.left-user-nav .user-nav > li.active > a {
+    background-color: red;
+}
+
 /*right users*/
 .right-user {
     border-bottom: solid 1px #ebebeb;
@@ -878,4 +865,3 @@ a.act_follow {
     padding: 3px 0px 3px 30px;
     border-right: solid 1px #e8e8e8;
 }
-

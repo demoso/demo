@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default shadow-box background-white">
+<nav class="navbar navbar-default shadow-box background-white" style="border-radius: 3px">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header visible-xs">
@@ -12,15 +12,12 @@
         </div>
     </div>
     <div id="home-navbar" class="collapse navbar-collapse">
-        <ul class="list-group user-nav">
+        <ul class="list-group user-nav column-nav">
             <li class="list-group-item">
-                <a href="${base}/post/editing"><i class="icon icon-layers"></i> 写文章</a>
+                <a href="${base}/post/editing"><i class="icon icon-note"></i> 写文章</a>
             </li>
             <li class="list-group-item">
                 <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
-            </li>
-            <li class="list-group-item">
-                <a href="${base}/user/columnlist"><i class="icon icon-list"></i> 我的专栏</a>
             </li>
         </ul>
     </div>

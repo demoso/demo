@@ -54,7 +54,7 @@ public class PostController extends BaseController {
 			Assert.isTrue(view.getAuthorId() == profile.getId(), "该文章不属于你");
 			model.put("view", view);
 		}
-
+		model.put("user", profile);
 		model.put("channels", channelService.findAll(Consts.STATUS_NORMAL));
 		model.put("classifys", classifyService.findByAuthorIdOrderByCreatedDesc(0l));
 		model.put("myclassifys", classifyService.findByAuthorIdOrderByCreatedDesc(profile.getId()));

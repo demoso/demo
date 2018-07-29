@@ -40,14 +40,23 @@ public class ColumnController extends BaseController {
 
 
     @RequestMapping(value = "/column/regfrom", method = RequestMethod.GET)
-    public String regfromview() {
+    public String regfromview(ModelMap model) {
+        AccountProfile profile = getSubject().getProfile();
+        if (profile != null)
+            model.put("user", profile);
         return view(Views.COl_REGFROM);
     }
 
     @RequestMapping(value = "/column/modifying/{id}", method = RequestMethod.GET)
     public String colmodify(@PathVariable int id, ModelMap model) {
+        AccountProfile profile = getSubject().getProfile();
+        if (profile != null)
+            model.put("user", profile);
+
         Columnlist columnlist = columnService.findOne(id);
+        Assert.isTrue(columnlist.getAuthorId() == profile.getId(), "该专栏不属于你");
         model.put("columnlist", columnlist);
+
         return view(Views.COl_REGFROM);
     }
 

@@ -269,7 +269,7 @@ abbr[data-original-title], abbr[title] {
 }
 
 .site-header .navbar-nav > li > a:focus, .site-header .navbar-nav > li > a:hover {
-    background-color: #A00000;
+    background-color: #484848;
 }
 
 .site-header .navbar-nav > li.active > a {
