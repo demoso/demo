@@ -53,7 +53,7 @@ public interface Views {
 	String ROUTE_POST_EDITING = "/channel/editing";
 	String ROUTE_POST_INDEX = "/channel/index";
 	String ROUTE_POST_VIEW = "/channel/view";
-	String COl_UPLOADLOGO = "/column/uploadlogo";
+	String ROUTE_CLASSIFY_LIST = "/classify/classifylist";
 	String COl_REGFROM = "/column/regfrom";
 	String USER_COLLIST = "/user/column_list";
     String USER_CLASSIFY = "/user/user_classify";

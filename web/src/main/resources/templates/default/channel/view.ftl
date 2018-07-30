@@ -126,7 +126,7 @@
                 <div class="user-classify-data row">
                         <#list classifys as row>
                             <div class="col-xs-6 atag">
-                                <a href="">${row.classname}</a>
+                                <a href="/classify/${view.author.id}/${row.classname}">${row.classname}</a>
                             </div>
                         </#list>
                 </div>

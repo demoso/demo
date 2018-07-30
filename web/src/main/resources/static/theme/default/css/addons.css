@@ -775,13 +775,6 @@ a.act_view {
     font-size: 16px;
 }
 
-.left-user-nav .user-nav > li > a:focus, .left-user-nav .user-nav > li > a:hover {
-    background-color: #fff;
-}
-
-.left-user-nav .user-nav > li.active > a {
-    background-color: red;
-}
 
 /*right users*/
 .right-user {

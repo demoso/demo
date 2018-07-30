@@ -16,8 +16,12 @@ import mblog.modules.blog.entity.Classify;
 import mblog.modules.blog.service.ChannelService;
 import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.user.data.UserVO;
+import mblog.modules.user.service.UserService;
 import mblog.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
@@ -41,6 +45,8 @@ public class ChannelController extends BaseController {
 	private PostService postService;
 	@Autowired
 	private ClassifyService classifyService;
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/channel/{id}")
 	public String channel(@PathVariable Integer id, ModelMap model,
@@ -67,5 +73,21 @@ public class ChannelController extends BaseController {
 		model.put("view", view);
 		model.put("classifys", classifys);
 		return view(Views.ROUTE_POST_VIEW);
+	}
+
+	@RequestMapping("/classify/{authorId}/{classname}")
+	public String classify(@PathVariable Long authorId, @PathVariable String classname, ModelMap model) {
+		Pageable pageable = wrapPageable();
+		Page<PostVO> page = postService.pagingByAuthorIdAndMyclassifysLike(pageable, authorId, "%" + classname + "%");
+		model.put("page", page);
+
+		List<Classify> classifys = classifyService.findByAuthorIdOrderByCreatedDesc(authorId);
+		model.put("classifys", classifys);
+
+		UserVO user = userService.get(authorId);
+		model.put("user", user);
+
+		model.put("classname", classname);
+		return view(Views.ROUTE_CLASSIFY_LIST);
 	}
 }

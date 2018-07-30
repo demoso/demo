@@ -19,7 +19,7 @@
             <div class="stream-list p-stream">
               <#list classifys as row>
               <div class="stream-item">
-                  <a style="width: 85%;display: inline-block;" href="${base}/classify/${row.classname}">
+                  <a style="width: 85%;display: inline-block;" href="${base}/classify/${row.authorId}/${row.classname}">
                       <span style="padding-left: 10px;font-size: 18px">${row.classname}</span>
                   </a>
                   <a style="display: inline-block;" class="act_delete" href="javascript:void(0);" data-evt="trash"

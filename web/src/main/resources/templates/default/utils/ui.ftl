@@ -283,13 +283,13 @@
 	<#if (channel== 1) >
     	<span class="label label-success">文</span>
     <#elseif (channel == 2)>
-    	<span class="label label-warning">问</span>
+    	<span class="label label-success">问</span>
     <#elseif (channel == 3)>
     	<span class="label label-info">图</span>
     <#elseif (channel == 4)>
-    	<span class="label label-violet">视频</span>
+    	<span class="label label-success">视频</span>
     <#elseif (channel == 5)>
-    <span class="label label-danger">推荐</span>
+    <span class="label label-success">推荐</span>
     </#if>
 </#macro>
 

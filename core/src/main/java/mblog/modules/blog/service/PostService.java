@@ -171,6 +171,16 @@ public interface PostService {
 	 */
 	List<Post> findTOP30ByAuthorIdAndIdNotInOrderByCreatedDesc(Long authorId, Set<Long> ids);
 
+	/**
+	 * 查询个人分类文章
+	 *
+	 * @param pageable
+	 * @param userId
+	 * @param classname
+	 */
+	Page<PostVO> pagingByAuthorIdAndMyclassifysLike(Pageable pageable, long userId, String classname);
+
+
 
 	void resetIndexs();
 

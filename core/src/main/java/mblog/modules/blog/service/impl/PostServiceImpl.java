@@ -187,7 +187,21 @@ public class PostServiceImpl implements PostService {
 		buildUsers(page.getContent(), uids);
 		return page;
 	}
-	
+
+	/**
+	 * 查询个人分类文章
+	 *
+	 * @param pageable
+	 * @param userId
+	 * @param classname
+	 */
+	@Override
+	@Cacheable
+	public Page<PostVO> pagingByAuthorIdAndMyclassifysLike(Pageable pageable, long userId, String classname) {
+		Page<Post> page = postDao.findByAuthorIdAndMyclassifysLike(pageable, userId, classname);
+		return new PageImpl<>(toPosts(page.getContent()), pageable, page.getTotalElements());
+	}
+
 	@Override
 	@Cacheable
 	public List<PostVO> findLatests(int maxResults, long ignoreUserId) {
