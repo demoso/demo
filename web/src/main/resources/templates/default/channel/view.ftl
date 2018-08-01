@@ -118,7 +118,8 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-default corner-radius panel-user-classify">
+        <#if classifys?size != 0>
+        <div class="panel panel-default corner-radius panel-user-classify" id="classifysid">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-user-circle"></i> 个人分类</h3>
             </div>
@@ -132,6 +133,8 @@
                 </div>
             </div>
         </div>
+        </#if>
+
         <#include "/default/inc/right.ftl"/>
     </div>
 </div>
