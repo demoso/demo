@@ -64,31 +64,12 @@
                         <div class="form-group">
                             <label for="classify" class="col-sm-2 control-label">专栏分类</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="classify">
-                                    <option value="选择分类">选择分类</option>
-                                    <option value='前端'>前端</option>
-                                    <option value='后端'>后端</option>
-                                    <option value='人工智能'>人工智能</option>
-                                    <option value='移动开发'>移动开发</option>
-                                    <option value='物联网'>物联网</option>
-                                    <option value='架构'>架构</option>
-                                    <option value='云计算/大数据'>云计算/大数据</option>
-                                    <option value='互联网'>互联网</option>
-                                    <option value='游戏开发'>游戏开发</option>
-                                    <option value='运维'>运维</option>
-                                    <option value='数据库'>数据库</option>
-                                    <option value='编程语言'>编程语言</option>
-                                    <option value='研发管理'>研发管理</option>
-                                    <option value='安全'>安全</option>
-                                    <option value='区块链'>区块链</option>
-                                    <option value='音视频开发'>音视频开发</option>
-                                    <option value='资讯'>资讯</option>
-                                    <option value='计算机理论与基础'>计算机理论与基础</option>
-                                    <option value='操作系统'>操作系统</option>
-                                    <option value='开发工具'>开发工具</option>
-                                    <option value='程序人生'>程序人生</option>
-                                    <option value='心情随笔'>心情随笔</option>
-                                    <option value='其他'>其他</option>
+                                <select class="form-control" name="classify" data-required>
+                                    <option value="">选择分类</option>
+                                    <#list classifys as row>
+                                       <option value="${row.id}" <#if (columnlist.classid == row.id)>
+                                       selected </#if>>${row.classname}</option>
+                                    </#list>
                                 </select>
                             </div>
                         </div>

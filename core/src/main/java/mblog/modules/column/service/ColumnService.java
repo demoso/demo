@@ -16,8 +16,8 @@ public class ColumnService {
     @Autowired
     private ColumnlistDao columnlistDao;
 
-    public List<Columnlist> findByIdxstatusOrderByHot() {
-        return columnlistDao.findByIdxstatusOrderByHot(1);
+    public List<Columnlist> findByIdxstatusOrderByHot(int idxstatus) {
+        return columnlistDao.findByIdxstatusOrderByHot(idxstatus);
     }
 
     /*我的专栏*/
@@ -37,8 +37,8 @@ public class ColumnService {
     }
 
     @Transactional
-    public void updateColumnlist(@Param("colname") String colname, @Param("comment") String comment, @Param("logo") String logo, @Param("classify") String classify, @Param("id") long id) {
-        columnlistDao.updateColumnlist(colname, comment, logo, classify, id);
+    public void updateColumnlist(@Param("colname") String colname, @Param("comment") String comment, @Param("logo") String logo, @Param("classid") int classid, @Param("id") long id) {
+        columnlistDao.updateColumnlist(colname, comment, logo, classid, id);
     }
 
     @Transactional

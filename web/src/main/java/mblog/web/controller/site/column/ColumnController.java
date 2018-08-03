@@ -6,7 +6,9 @@ import mblog.base.data.Data;
 import mblog.base.utils.FileNameUtils;
 import mblog.base.utils.ImageUtils;
 import mblog.modules.blog.data.PostVO;
+import mblog.modules.blog.entity.Classify;
 import mblog.modules.blog.entity.Post;
+import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.PostService;
 import mblog.modules.column.entity.Columnlist;
 import mblog.modules.column.entity.ColumnlistAttr;
@@ -37,6 +39,8 @@ public class ColumnController extends BaseController {
     private PostService postService;
     @Autowired
     private ColumnattrService columnattrService;
+    @Autowired
+    ClassifyService classifyService;
 
 
     @RequestMapping(value = "/column/regfrom", method = RequestMethod.GET)
@@ -44,7 +48,11 @@ public class ColumnController extends BaseController {
         AccountProfile profile = getSubject().getProfile();
         if (profile != null)
             model.put("user", profile);
+        //分类list
+        List<Classify> classifys = classifyService.findByAuthorIdOrderByCreatedDesc(0);
+        model.put("classifys", classifys);
         return view(Views.COl_REGFROM);
+
     }
 
     @RequestMapping(value = "/column/modifying/{id}", method = RequestMethod.GET)
@@ -128,7 +136,7 @@ public class ColumnController extends BaseController {
             Columnlist exist = columnService.findOne(columnlist.getId());
             Assert.notNull(exist, "专栏不存在");
             Assert.isTrue(exist.getAuthorId() == profile.getId(), "该专栏不属于你");
-            columnService.updateColumnlist(columnlist.getColname(), columnlist.getComment(), columnlist.getLogo(), columnlist.getClassify(), columnlist.getId());
+            columnService.updateColumnlist(columnlist.getColname(), columnlist.getComment(), columnlist.getLogo(), columnlist.getClassid(), columnlist.getId());
         } else {
             columnlist.setCreated(new Date());
             columnlist.setHot(100);

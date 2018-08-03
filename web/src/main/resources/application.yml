@@ -1,5 +1,5 @@
 server:
-    port: 8080
+    port: 80
 spring:
     devtools:
         enabled: true
@@ -11,7 +11,7 @@ spring:
     freemarker:
         template-loader-path:
         - classpath:/templates
-        - file:./templates
+        - file:./templatescd we
         cache: false
         checkTemplateLocation: false
         settings:
@@ -55,5 +55,5 @@ spring:
 site:
     theme: default
     store:
-      root: d:/data/mblog
+      root: D:\data\mblog
       size: 2
