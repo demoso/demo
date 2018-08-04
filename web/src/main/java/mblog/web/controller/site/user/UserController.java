@@ -16,6 +16,8 @@ import mblog.modules.blog.data.FeedsVO;
 import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.entity.Classify;
 import mblog.modules.blog.service.*;
+import mblog.modules.code.data.Code;
+import mblog.modules.code.service.CodeService;
 import mblog.modules.column.entity.Columnlist;
 import mblog.modules.column.service.ColumnService;
 import mblog.modules.user.data.AccountProfile;
@@ -64,6 +66,8 @@ public class UserController extends BaseController {
 	private ColumnService columnServic;
 	@Autowired
 	private ClassifyService classifyService;
+	@Autowired
+	private CodeService codeService;
 
 	/**
 	 * 用户主页
@@ -254,6 +258,45 @@ public class UserController extends BaseController {
 		if (classify != null && classify.getAuthorId() == up.getId()) {
 			classifyService.delete(id);
 			data = Data.success("操作成功", Data.NOOP);
+		}
+		return data;
+	}
+
+	/**
+	 * 我发布的文章
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "/user/codelist")
+	public String userCode(ModelMap model) {
+		Pageable pageable = wrapPageable();
+		AccountProfile up = getSubject().getProfile();
+		Page<Code> page = codeService.pagingByAuthorId(pageable, up.getId());
+		;
+		model.put("page", page);
+		initUser(model);
+		return view(Views.USER_CODE);
+	}
+
+	/**
+	 * 删除代码
+	 *
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/user/codedelete/{id}")
+	public @ResponseBody
+	Data delete(@PathVariable Long id) {
+		Data data = Data.failure("操作失败");
+		if (id != null) {
+			AccountProfile up = getSubject().getProfile();
+			try {
+				codeService.delete(id, up.getId());
+				data = Data.success("操作成功", Data.NOOP);
+			} catch (Exception e) {
+				data = Data.failure(e.getMessage());
+			}
 		}
 		return data;
 	}

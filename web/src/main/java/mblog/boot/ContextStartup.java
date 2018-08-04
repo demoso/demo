@@ -3,9 +3,13 @@ package mblog.boot;
 import mblog.base.context.AppContext;
 import mblog.base.lang.Consts;
 import mblog.base.print.Printer;
+import mblog.modules.blog.entity.Classify;
 import mblog.modules.blog.entity.Config;
 import mblog.modules.blog.service.ChannelService;
+import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.ConfigService;
+import mblog.modules.column.entity.Columnlist;
+import mblog.modules.column.service.ColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -28,6 +32,10 @@ public class ContextStartup implements ApplicationRunner, Ordered, ServletContex
     private ChannelService channelService;
     @Autowired
     private AppContext appContext;
+    @Autowired
+    ClassifyService classifyService;
+    @Autowired
+    private ColumnService columnService;
 
     private ServletContext servletContext;
 
@@ -41,6 +49,7 @@ public class ContextStartup implements ApplicationRunner, Ordered, ServletContex
 
                 resetSiteConfig(true);
                 resetChannels();
+                bandMap();
 
                 Printer.info("OK, completed");
             }
@@ -89,5 +98,26 @@ public class ContextStartup implements ApplicationRunner, Ordered, ServletContex
      */
     public void resetChannels() {
         servletContext.setAttribute("channels", channelService.findAll(Consts.STATUS_NORMAL));
+    }
+
+    public void bandMap() {
+        Map<String, List<Columnlist>> map = new HashMap<>();
+        //专栏list
+        List<Columnlist> columnlists = columnService.findByIdxstatusOrderByHot(1);
+        //分类list
+        List<Classify> classifies = classifyService.findByAuthorIdOrderByCreatedDesc(0);
+        //根据分类来遍历
+        for (Classify classify : classifies) {
+            List<Columnlist> listcol = new ArrayList<Columnlist>();
+            //重新新封装
+            for (Columnlist columnlist : columnlists) {
+                if (classify.getId() == columnlist.getClassid()) {
+                    listcol.add(columnlist);
+                }
+            }
+            if (listcol.size() != 0)
+                map.put(classify.getClassname(), listcol);
+        }
+        servletContext.setAttribute("classify_column_map", map);
     }
 }

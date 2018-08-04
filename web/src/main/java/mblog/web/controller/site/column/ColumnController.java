@@ -26,7 +26,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ColumnController extends BaseController {
@@ -247,7 +250,6 @@ public class ColumnController extends BaseController {
         model.put("next", next);
         model.put("columnlist", columnlist);
         model.put("columnlistAttrList", columnlistAttrList);
-        bandmap(model);
         return view(Views.COL_VIEW);
     }
 
@@ -291,32 +293,9 @@ public class ColumnController extends BaseController {
         model.put("next", next);
         model.put("columnlist", columnlist);
         model.put("columnlistAttrList", columnlistAttrList);
-        bandmap(model);
         return view(Views.COL_VIEW);
     }
 
-
-    public void bandmap(ModelMap model) {
-        Map<String, List<Columnlist>> map = new HashMap<>();
-        //专栏list
-        List<Columnlist> columnlists = columnService.findByIdxstatusOrderByHot(1);
-        //分类list
-        List<Classify> classifies = classifyService.findByAuthorIdOrderByCreatedDesc(0);
-        //根据分类来遍历
-        for (Classify classify : classifies) {
-            List<Columnlist> listcol = new ArrayList<Columnlist>();
-            //重新新封装
-            for (Columnlist columnlist : columnlists) {
-                if (classify.getId() == columnlist.getClassid()) {
-                    listcol.add(columnlist);
-                }
-            }
-            if (listcol.size() != 0)
-                map.put(classify.getClassname(), listcol);
-        }
-
-        model.put("map", map);
-    }
 
 
 }

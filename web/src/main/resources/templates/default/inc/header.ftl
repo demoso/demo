@@ -74,7 +74,7 @@
 					</#if>
 					<#list channels as row>
 						<li>
-							<a href="${base}/channel/${row.id}" nav="${row.name}">${row.name}</a>
+                            <a href="${base}/${row.url}" nav="${row.name}">${row.name}</a>
 						</li>
 					</#list>
                 </ul>

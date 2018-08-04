@@ -18,12 +18,12 @@ import mblog.modules.user.service.UserService;
 import mblog.modules.utils.BeanMapUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.*;
 
@@ -57,6 +57,13 @@ public class CodeService {
         return d;
     }
 
+    @Transactional
+    public void delete(long id, long userId) {
+        CodePO codepo = codeDao.findOne(id);
+        Assert.isTrue(codepo.getAuthorId() == userId, "该代码不属于你");
+        codeDao.delete(id);
+    }
+
     private List<Code> toCodes(List<CodePO> codes) {
         List<Code> rets = new ArrayList<>();
         HashSet<Long> uids = new HashSet<>();
@@ -71,9 +78,14 @@ public class CodeService {
 
 
     @Transactional(readOnly = true)
-    @Cacheable
     public Page<Code> paging(Pageable pageable) {
         Page<CodePO> page = codeDao.findAllByOrderByIdDesc(pageable);
+        return new PageImpl<>(toCodes(page.getContent()), pageable, page.getTotalElements());
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Code> pagingByAuthorId(Pageable pageable, long userId) {
+        Page<CodePO> page = codeDao.findAllByAuthorIdOrderByIdDesc(pageable, userId);
         return new PageImpl<>(toCodes(page.getContent()), pageable, page.getTotalElements());
     }
 

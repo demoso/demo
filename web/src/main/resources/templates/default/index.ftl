@@ -3,7 +3,7 @@
 <@layout>
 <div class="row streams">
     <div class="col-xs-12 col-md-8 side-left">
-    <#list map?keys as key>
+    <#list classify_column_map?keys as key>
         <div class="panel panel-default corner-radius panel-radius" id="${key}">
             <div class="panel-heading panel-heading-bgcolor" >
                 <h3 class="panel-title">
@@ -12,7 +12,7 @@
             </div>
             <div class="panel-body list-body">
                 <ul class="time-list clearfix">
-                    <#list map[key] as row >
+                    <#list classify_column_map[key] as row >
                     <li><a href="/columnview/${row.id}" title="${row.comment}" lass="linkTip"><img
                             class="img-circle img-wh" src="${row.logo}"/>
                         ${row.colname}</a></li>

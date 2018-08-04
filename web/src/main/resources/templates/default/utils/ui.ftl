@@ -339,3 +339,46 @@
         </div>
     </div>
 </#macro>
+
+<#macro showCode row>
+    <div class="stream-item" id="loop-${row.id}">
+        <div class="article-title">
+            <a href="${base}/${row.suburl}/${row.codetype}/${row.id}">
+                <span class="label label-success">码</span>
+                <span class="h2-title">${row.title!}</span>
+            </a>
+        </div>
+        <#if (row.summary?length>0)>
+           <div class="summary">
+               <a href="${base}/${row.suburl}/${row.codetype}/${row.id}">
+                   <div class="excerpt wordbreak">${row.summary!}</div>
+               </a>
+           </div>
+        </#if>
+        <div class="p-rank clearfix">
+            <div class="users">
+                <a href="${base}/users/${row.author.id}">
+                    <div class="ava">
+                      <@showAva row.author.avatar "img-circle"/>
+                    </div>
+                    <div class="info">
+                        <span><small>${row.author.name}</small></span>
+                    </div>
+                </a>
+                <div class="info">
+                    <span><time> ${timeAgo(row.created)}</time></span>
+                </div>
+                <div class="info">
+                  <#if row.tagsArray??>
+                      <i>标签：</i>
+                  </#if>
+                    <#list  row.tagsArray as tag>
+                              <a class="tag-link" href="${base}/tag/${tag}">${tag}</a>
+                        <#if tag_has_next>,
+                        </#if>
+                    </#list>
+                </div>
+            </div>
+        </div>
+    </div>
+</#macro>

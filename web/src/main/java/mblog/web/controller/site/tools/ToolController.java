@@ -64,7 +64,7 @@ public class ToolController extends BaseController {
     }
 
     @RequestMapping("/codelist")
-    public String codelist(Integer pn, ModelMap model) {
+    public String codelist(ModelMap model) {
         Pageable pageable = wrapPageable();
         Page<Code> page = codeService.paging(pageable);
         model.put("page", page);

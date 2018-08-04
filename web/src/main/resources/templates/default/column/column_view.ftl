@@ -113,10 +113,10 @@
         <div class="side-right-box">
             <div class="side-right-list">
                 <ul>
-                    <#list map?keys as key>
+                    <#list classify_column_map?keys as key>
                         <li class="item-box"><a href="javascript:void(0);"> ${key}</a>
                         <ul class="hidden-item">
-                            <#list map[key] as row >
+                            <#list classify_column_map[key] as row >
                                 <li><a title="${row.comment}" href="/columnview/${row.id}"><img
                                         class="img-circle img-wh" src="${row.logo}"/>${row.colname}</a></li>
                             </#list>
