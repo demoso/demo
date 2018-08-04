@@ -29,6 +29,7 @@ public interface Views {
 
 	String USER_FEEDS = "/user/method_feeds";
 	String USER_POSTS = "/user/method_posts";
+    String USER_CODE = "/user/codelist";
 
 	String USER_COMMENTS = "/user/method_comments";
 	String USER_FOLLOWS = "/user/method_follows";

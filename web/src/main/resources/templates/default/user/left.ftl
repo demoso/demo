@@ -28,10 +28,13 @@
         <div id="home-navbar" class="collapse navbar-collapse left-user-nav">
             <ul class="list-group user-nav">
                 <li class="list-group-item">
-                    <a href="${base}/post/editing"><i class="icon icon-note"></i> 写文章</a>
+                    <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="${base}/column/regfrom"><i class="icon icon-list"></i> 创建专栏</a>
+                    <a href="${base}/user/columnlist"><i class="icon icon-list"></i> 我的专栏</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="${base}/user/classify"><i class="icon icon-list"></i> 我的分类</a>
                 </li>
             </ul>
 
@@ -40,13 +43,10 @@
                     <a href="${base}/user?method=posts"><i class="icon icon-list"></i> 我的文章</a>
                 </li>
                 <li class="list-group-item">
+                    <a href="${base}/user/codelist"><i class="icon icon-list"></i> 我的代码</a>
+                </li>
+                <li class="list-group-item">
                     <a href="${base}/user?method=comments"><i class="icon icon-speech"></i> 我的评论</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="${base}/user/columnlist"><i class="icon icon-list"></i> 我的专栏</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="${base}/user/classify"><i class="icon icon-list"></i> 我的分类</a>
                 </li>
             </ul>
 
