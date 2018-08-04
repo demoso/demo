@@ -16,7 +16,7 @@ public interface ColumnlistDao extends JpaRepository<Columnlist, Integer>, CrudR
 
     @Modifying
     @Transactional
-    @Query("update Columnlist set colname = :colname ,comment=:comment,logo=:logo,classify=:classify where id = :id")
-    void updateColumnlist(@Param("colname") String colname, @Param("comment") String comment, @Param("logo") String logo, @Param("classify") String classify, @Param("id") long id);
+    @Query("update Columnlist set colname = :colname ,comment=:comment,logo=:logo,classid=:classid where id = :id")
+    void updateColumnlist(@Param("colname") String colname, @Param("comment") String comment, @Param("logo") String logo, @Param("classid") int classid, @Param("id") long id);
 
 }

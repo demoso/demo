@@ -37,8 +37,8 @@ public class Columnlist {
     @Column(name = "authorid")
     private long authorId;
 
-    @Column(name = "classify")
-    private String classify;
+    @Column(name = "classid")
+    private int classid;
 
     @Column(name = "hot")
     private int hot;
@@ -85,19 +85,20 @@ public class Columnlist {
         this.logo = logo;
     }
 
-    public String getClassify() {
-        return classify;
-    }
-
-    public void setClassify(String classify) {
-        this.classify = classify;
-    }
     public long getAuthorId() {
         return authorId;
     }
 
     public void setAuthorId(long authorId) {
         this.authorId = authorId;
+    }
+
+    public int getClassid() {
+        return classid;
+    }
+
+    public void setClassid(int classid) {
+        this.classid = classid;
     }
 
     public int getHot() {

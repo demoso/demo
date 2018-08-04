@@ -12,8 +12,6 @@
     background-color: #fff;
 }
 
-
-
 .stream-item .summary {
     overflow: hidden;
     padding-top: 10px;
@@ -24,6 +22,10 @@
     margin-bottom: 0px;
     border-bottom: 1px solid #ebebeb;
     position: relative;
+}
+
+.p-stream .stream-item:hover {
+    background-color: #F9F9F9;
 }
 .p-rank {
     margin-top: 10px;
@@ -726,8 +728,8 @@ input.tab-input {
 }
 
 a.act_edit {
-    background-color: #1cba11;
-    border-color: #5cb85c;
+    background-color: rgb(0, 181, 173);
+    border-color: rgb(0, 181, 173);
     color: #fff;
     font-size: 12px;
     line-height: 22px;
@@ -801,8 +803,8 @@ a.act_view {
 }
 
 a.act_follow {
-    background-color: #1cba11;
-    border-color: #5cb85c;
+    background-color: rgb(0, 181, 173);
+    border-color: rgb(0, 181, 173);
     color: #fff;
     font-weight: bold;
     font-size: 12px;
@@ -858,7 +860,6 @@ a.act_follow {
     padding: 3px 0px 3px 30px;
     border-right: solid 1px #e8e8e8;
 }
-
 /**********index***********/
 .time-list {
     font-family: inherit;
@@ -895,7 +896,6 @@ a.act_follow {
     background-color: #F0F0F0;
 
 }
-
 .time-list li a {
     display: inline-block;
     width: 100%;
@@ -918,4 +918,8 @@ a.act_follow {
 
 .panel-heading-bgcolor {
     /*background-color: #F8F8F8;*/
+}
+
+.panel-radius .corner-radius {
+    border-radius: 5px;
 }

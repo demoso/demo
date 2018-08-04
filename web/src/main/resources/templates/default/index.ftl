@@ -4,7 +4,7 @@
 <div class="row streams">
     <div class="col-xs-12 col-md-8 side-left">
     <#list map?keys as key>
-        <div class="panel panel-default corner-radius" id="${key}">
+        <div class="panel panel-default corner-radius panel-radius" id="${key}">
             <div class="panel-heading panel-heading-bgcolor" >
                 <h3 class="panel-title">
                     <i class="fa fa-chevron-circle-down"></i>

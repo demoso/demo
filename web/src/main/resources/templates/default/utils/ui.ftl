@@ -310,7 +310,7 @@
         </div>
         <div class="p-rank clearfix">
             <div class="users">
-                <a href="${base}/ta/${row.author.id}">
+                <a href="${base}/users/${row.author.id}">
                     <div class="ava">
                                     <@showAva row.author.avatar "img-circle"/>
                     </div>
