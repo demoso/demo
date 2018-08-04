@@ -803,8 +803,8 @@ a.act_view {
 }
 
 a.act_follow {
-    background-color: rgb(0, 181, 173);
-    border-color: rgb(0, 181, 173);
+    background-color: #1cba11;
+    border-color: #5cb85c;
     color: #fff;
     font-weight: bold;
     font-size: 12px;
