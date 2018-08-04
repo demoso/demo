@@ -53,7 +53,6 @@ public class IndexController extends BaseController{
 			//重新新封装
 			for (Columnlist columnlist : columnlists) {
 				if (classify.getId() == columnlist.getClassid()) {
-					System.out.println("==");
 					listcol.add(columnlist);
 				}
 			}

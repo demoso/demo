@@ -350,7 +350,7 @@ abbr[data-original-title], abbr[title] {
 }
 
 .site-header .navbar-form .search-input {
-    border-radius: 3px;
+    border-radius: 17px;
     box-shadow: none;
     transition: all 0.15s ease-in 0s;
 }

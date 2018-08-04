@@ -61,7 +61,8 @@ img {
     padding-left: 12px;
 }
 .article-title .h2-title{
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
     display: inline;
     vertical-align: -2px;
     margin-left: 10px;
@@ -910,7 +911,7 @@ a.act_follow {
     white-space: nowrap;
 }
 
-.time-list li a .img-wh {
+li a .img-wh {
     width: 20px;
     height: 20px;
     margin-right: 4px;

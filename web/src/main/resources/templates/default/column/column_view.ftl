@@ -113,78 +113,16 @@
         <div class="side-right-box">
             <div class="side-right-list">
                 <ul>
-                    <li class="item-box"><a href="javascript:void(0);"> HTML / CSS</a>
+                    <#list map?keys as key>
+                        <li class="item-box"><a href="javascript:void(0);"> ${key}</a>
                         <ul class="hidden-item">
-                            <li><a title="HTML 教程" href="//www.runoob.com/html/html-tutorial.html">HTML 教程</a></li>
-                            <li><a title="HTML5 教程" href="//www.runoob.com/html/html5-intro.html">HTML5 教程</a></li>
-                            <li><a title="CSS 教程" href="//www.runoob.com/css/css-tutorial.html">CSS 教程</a></li>
-                            <li><a title="CSS3 教程" href="//www.runoob.com/css3/css3-tutorial.html">CSS3 教程</a></li>
-                            <li><a title="Bootstrap3 教程sfdsfdsfdfdsfsdfd"
-                                   href="//www.runoob.com/bootstrap/bootstrap-tutorial.html">Bootstrap3教程sfdsfdsfdfdsfsdfd
-                                教程</a></li>
-                            <li><a title="Bootstrap4 教程" href="//www.runoob.com/bootstrap4/bootstrap4-tutorial.html">Bootstrap4
-                                教程</a></li>
-                            <li><a title="Font Awesome 教程"
-                                   href="//www.runoob.com/font-awesome/fontawesome-tutorial.html">Font Awesome 教程</a>
-                            </li>
-                            <li><a title="Foundation 教程" href="//www.runoob.com/foundation/foundation-tutorial.html">Foundation
-                                教程</a></li>
+                            <#list map[key] as row >
+                                <li><a title="${row.comment}" href="/columnview/${row.id}"><img
+                                        class="img-circle img-wh" src="${row.logo}"/>${row.colname}</a></li>
+                            </#list>
                         </ul>
-
                     </li>
-                    <li class="item-box"><a href="javascript:void(0);"> JavaScript</a>
-                        <ul class="hidden-item">
-                            <li><a title="JavaScript 教程" href="//www.runoob.com/js/js-tutorial.html">JavaScript 教程</a>
-                            </li>
-                            <li><a title="HTML DOM 教程" href="//www.runoob.com/htmldom/htmldom-tutorial.html">HTML DOM
-                                教程</a></li>
-                            <li><a title="jQuery 教程" href="//www.runoob.com/jquery/jquery-tutorial.html">jQuery 教程</a>
-                            </li>
-                            <li><a title="AngularJS 教程" href="//www.runoob.com/angularjs/angularjs-tutorial.html">AngularJS
-                                教程</a></li>
-                            <li><a title="AngularJS2 教程" href="//www.runoob.com/angularjs2/angularjs2-tutorial.html">AngularJS2
-                                教程</a></li>
-                            <li><a title="Vue.js 教程" href="//www.runoob.com/vue2/vue-tutorial.html">Vue.js 教程</a></li>
-                            <li><a title="React 教程" href="//www.runoob.com/react/react-tutorial.html">React 教程</a></li>
-                            <li><a title="jQuery UI 教程" href="//www.runoob.com/jqueryui/jqueryui-tutorial.html">jQuery
-                                UI 教程</a></li>
-                            <li><a title="jQuery EasyUI 教程" href="//www.runoob.com/jeasyui/jqueryeasyui-tutorial.html">jQuery
-                                EasyUI 教程</a></li>
-                            <li><a title="Node.js 教程" href="//www.runoob.com/nodejs/nodejs-tutorial.html">Node.js 教程</a>
-                            </li>
-                            <li><a title="AJAX 教程" href="//www.runoob.com/ajax/ajax-tutorial.html">AJAX 教程</a></li>
-                            <li><a title="JSON 教程" href="//www.runoob.com/json/json-tutorial.html">JSON 教程</a></li>
-                            <li><a title="Highcharts 教程" href="//www.runoob.com/highcharts/highcharts-tutorial.html">Highcharts
-                                教程</a></li>
-                            <li><a title="Google 地图 教程" href="//www.runoob.com/googleapi/google-maps-basic.html">Google
-                                地图 教程</a></li>
-                        </ul>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> 服务端</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> 数据库</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> 移动端</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> XML 教程</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> ASP.NET</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> Web Service</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> 开发工具</a>
-
-                    </li>
-                    <li class="item-box"><a href="javascript:void(0);" class="tit"> 网站建设</a>
-
-                    </li>
+                    </#list>
                 </ul>
             </div>
         </div>

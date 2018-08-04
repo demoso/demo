@@ -13,7 +13,8 @@
             <div class="panel-body list-body">
                 <ul class="time-list clearfix">
                     <#list map[key] as row >
-                    <li><a href="columnview/${row.id}" title="${row.comment}"  lass="linkTip"><img class="img-circle img-wh" src="${row.logo}"/>
+                    <li><a href="/columnview/${row.id}" title="${row.comment}" lass="linkTip"><img
+                            class="img-circle img-wh" src="${row.logo}"/>
                         ${row.colname}</a></li>
                     </#list>
                     <div style="clear:both;"></div>
