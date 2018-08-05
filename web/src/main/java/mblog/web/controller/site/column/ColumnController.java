@@ -259,8 +259,7 @@ public class ColumnController extends BaseController {
     @RequestMapping("/columnview/{columnid}")
     public String columnidview(@PathVariable int columnid, ModelMap model) {
         List<ColumnlistAttr> columnlistAttrList = columnattrService.findByColumnidOrderByHotAsc(columnid);
-        Assert.notNull(columnlistAttrList, "该专栏暂时无文章");
-
+        Assert.isTrue(!columnlistAttrList.isEmpty(), "该专栏暂时无文章");
         long id = columnlistAttrList.get(0).getUrl();
         PostVO view = postService.get(id);
         Assert.notNull(view, "该文章已被删除");

@@ -145,7 +145,7 @@
         ifrw.document.open();
         ifrw.document.write(loadingdata);
         ifrw.document.close();
-        $.post("http://120.55.164.177:8088/compile.php", {
+        $.post("http://207.246.97.103/compile.php", {
             code: code,
             language: runcode,
             stdin: stdinput

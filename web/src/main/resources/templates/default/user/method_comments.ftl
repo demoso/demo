@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="text-center clr">
-	          <@pager request.requestURI, page, 5/>
+	          <@pager "user?method=comments", page, 5/>
         </div>
     </div>
 </div>

@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="text-center clr">
-	          <@pager request.requestURI, page, 5/>
+	          <@pager "user?method=notifies", page, 5/>
         </div>
     </div>
 </div>
