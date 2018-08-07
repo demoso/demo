@@ -25,7 +25,7 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost/db_mblog?useSSL=false&characterEncoding=utf8
         username: root
-        password: sotjimmy
+        password: 123456
 
     jpa:
         database: mysql
@@ -55,5 +55,5 @@ spring:
 site:
     theme: default
     store:
-      root: /home/demoso/blogdata
+      root: D:\data\mblog
       size: 2

@@ -60,6 +60,9 @@ public interface PostDao extends JpaRepository<Post, Long>, JpaSpecificationExec
 	@Query("select coalesce(max(weight), 0) from Post")
 	int maxWeight();
 
+	@Query("select id,title from Post where authorId=:authorId order by created desc")
+	List<Object[]> queryByAuthorIdOrderByCreatedDesc(@Param("authorId") long authorId);
+
 	@Modifying
 	@Transactional
 	@Query("update Post set views = views + :increment where id = :id")

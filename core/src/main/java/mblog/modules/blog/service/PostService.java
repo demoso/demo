@@ -180,7 +180,12 @@ public interface PostService {
 	 */
 	Page<PostVO> pagingByAuthorIdAndMyclassifysLike(Pageable pageable, long userId, String classname);
 
-
+	/**
+	 * 查询个人文章信息，为上一篇，下一篇使用
+	 *
+	 * @param id
+	 */
+	List<Object[]> queryByAuthorIdOrderByCreatedDesc(long id);
 
 	void resetIndexs();
 

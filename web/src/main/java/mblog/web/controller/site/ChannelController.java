@@ -13,6 +13,7 @@ import mblog.base.lang.Consts;
 import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.entity.Channel;
 import mblog.modules.blog.entity.Classify;
+import mblog.modules.blog.entity.Post;
 import mblog.modules.blog.service.ChannelService;
 import mblog.modules.blog.service.ClassifyService;
 import mblog.modules.blog.service.PostService;
@@ -69,7 +70,31 @@ public class ChannelController extends BaseController {
 
 		Assert.notNull(view, "该文章已被删除");
 		List<Classify> classifys = classifyService.findByAuthorIdOrderByCreatedDesc(view.getAuthorId());
+		List<Object[]> postList = postService.queryByAuthorIdOrderByCreatedDesc(view.getAuthorId());
+		Post pre = null;
+		Post next = null;
+		int next_state = 0;
+		for (int i = 0; i < postList.size(); i++) {
+			long cur_articleid = (Long) postList.get(i)[0];
+			if (next_state == 1) {
+				next = new Post();
+				next.setId((Long) postList.get(i)[0]);
+				next.setTitle((String) postList.get(i)[1]);
+				break;
+			}
+			if (cur_articleid == id) {
+				next_state = 1;
+			}
+			if (cur_articleid != id) {
+				pre = new Post();
+				pre.setId((Long) postList.get(i)[0]);
+				pre.setTitle((String) postList.get(i)[1]);
+			}
+		}
+
 		postService.identityViews(id);
+		model.put("pre", pre);
+		model.put("next", next);
 		model.put("view", view);
 		model.put("classifys", classifys);
 		return view(Views.ROUTE_POST_VIEW);

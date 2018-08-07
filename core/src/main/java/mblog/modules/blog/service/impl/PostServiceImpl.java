@@ -147,6 +147,11 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
+	public List<Object[]> queryByAuthorIdOrderByCreatedDesc(long authorId) {
+		return postDao.queryByAuthorIdOrderByCreatedDesc(authorId);
+	}
+
+	@Override
 	@Cacheable
 	public List<PostVO> findAllFeatured() {
 		List<Post> list = postDao.findTop5ByFeaturedGreaterThanOrderByCreatedDesc(Consts.FEATURED_DEFAULT);

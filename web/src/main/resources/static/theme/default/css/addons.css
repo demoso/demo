@@ -761,6 +761,7 @@ a.act_editarticle {
     border-radius: 2px;
 }
 
+
 a.act_view {
     background-color: #E8E8E8;
     border-color: #909090;
@@ -923,4 +924,17 @@ li a .img-wh {
 
 .panel-radius .corner-radius {
     border-radius: 5px;
+}
+
+.meta .label-default {
+    background-color: #F0F0F0;
+    font-weight: normal;
+    border-radius: 10px;
+}
+
+.like-favor {
+    margin-bottom: 18px;
+    text-align: center; /*让div内部文字居中*/
+    font-weight: bold;
+    font-size: 25px;
 }

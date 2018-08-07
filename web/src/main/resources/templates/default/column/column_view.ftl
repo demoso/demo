@@ -42,7 +42,13 @@
                     <abbr class="timeago">${timeAgo(view.created)}</abbr>
                     ⋅
                     ${view.views} 阅读
-
+                    <div style="display: inline;margin-left: 15px">
+                    <#list view.tagsArray as tag>
+                        <span>
+                            <a class="label label-default" href="${base}/tag/${tag}/">${tag}</a>
+                        </span>
+                    </#list>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -52,21 +58,34 @@
                     ${view.content}
                 </div>
             </div>
-            <div class="panel-footer operate">
-                <#list view.tagsArray as tag>
-                    <span>
-                            <a class="label label-default" href="${base}/tag/${tag}/">#${tag}</a>
-                        </span>
-                </#list>
+            <div class="like-favor">
+                <a class="label label-info" href="javascript:void(0);" data-id="${view.id}" rel="favor">
+                    <i class="fa fa-heart"></i> 喜欢 <span style="padding-right: 5px">|</span><span
+                        id="favors">${view.favors}</span>
+                </a>
             </div>
             <div class="panel-footer operate">
-                <div class="hidden-xs">
-                    <div class="social-share" data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
-                </div>
+                <div class="social-share" style="float: right;margin-bottom: -10px"
+                     data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
                 <div class="clearfix"></div>
             </div>
         </div>
-
+        <div class="panel panel-default padding-md" style="margin-top: -21px">
+            <div class="panel-body">
+                <div class="col-sm-6 page-prev text-nowrap">
+                    <#if pre??>
+                        <b>上一篇:</b>
+                        <a href="${base}/columnview/${columnlist.id}/${pre.url}">${pre.title}</a>
+                    </#if>
+                </div>
+                <div class="col-sm-6 page-next text-nowrap">
+                    <#if next??>
+                        <b>下一篇:</b>
+                        <a href="${base}/columnview/${columnlist.id}/${next.url}">${next.title}</a>
+                    </#if>
+                </div>
+            </div>
+        </div>
         <!-- Comments -->
         <div id="chat" class="chats shadow-box">
             <div class="chat_other">

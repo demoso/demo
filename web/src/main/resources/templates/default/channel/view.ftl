@@ -22,6 +22,14 @@
                     ⋅
                 ${view.views} 阅读
 
+                    <div style="display: inline;margin-left: 15px">
+                    <#list view.tagsArray as tag>
+                        <span>
+                            <a class="label label-default" href="${base}/tag/${tag}/">${tag}</a>
+                        </span>
+                    </#list>
+                    </div>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -31,27 +39,33 @@
                 ${view.content}
                 </div>
             </div>
-            <div class="panel-footer operate">
-                <#list view.tagsArray as tag>
-                    <span>
-                            <a class="label label-default" href="${base}/tag/${tag}/">#${tag}</a>
-                        </span>
-                </#list>
-            </div>
-            <div class="panel-footer operate">
-                <div class="text-center">
-                    <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
-                        <i class="icon icon-like"></i> 喜欢
-                    </a>
-                    <strong id="favors">${view.favors}</strong> 喜欢
-                </div>
-            </div>
 
+            <div class="like-favor">
+                <a class="label label-info" href="javascript:void(0);" data-id="${view.id}" rel="favor">
+                    <i class="fa fa-heart"></i> 喜欢 <span style="padding-right: 5px">|</span><span
+                        id="favors">${view.favors}</span>
+                </a>
+            </div>
             <div class="panel-footer operate">
-                <div class="hidden-xs">
-                    <div class="social-share" data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
-                </div>
+                <div class="social-share" style="float: right;margin-bottom: -10px"
+                     data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
                 <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="panel panel-default padding-md" style="margin-top: -21px">
+            <div class="panel-body">
+                <div class="col-sm-6 page-prev text-nowrap">
+                    <#if pre??>
+                        <b>上一篇:</b>
+                        <a href="${base}/view/${pre.id}">${pre.title}</a>
+                    </#if>
+                </div>
+                <div class="col-sm-6 page-next text-nowrap">
+                    <#if next??>
+                        <b>下一篇:</b>
+                        <a href="${base}/view/${next.id}">${next.title}</a>
+                    </#if>
+                </div>
             </div>
         </div>
 
