@@ -6,27 +6,6 @@
 
 <@layout title>
 <div class="row main">
-    <div class="col-xs-12 col-md-2 hidden-xs hidden-sm">
-        <div class="side-box">
-            <div class="left-title">
-                <a href="${base}/columnview/${columnlist.id}">
-                    <span id="col-title"><i class="fa fa-th-list"></i> ${columnlist.colname}</span>
-                </a>
-            </div>
-            <div class="leftcolumnlist">
-            <#list columnlistAttrList as row >
-                <#if row.csstype=='H3'>
-                   <a target="_top" <#if id=row.url>
-                      style="font-weight: bold;  color: rgb(255, 255, 255);  background-color: #0C9A9A;" </#if>
-                      title="${row.title}" href="/columnview/${row.columnid}/${row.url}">${row.title}</a>
-                <#else>
-                    <h2 class="leftcolumn-h2"><span class="left-h2">${row.title}</span></h2>
-                </#if>
-            </#list>
-
-            </div>
-        </div>
-    </div>
     <div class="col-xs-12 col-md-8 side-left topics-show">
         <!-- view show -->
         <div class="topic panel panel-default">
@@ -42,12 +21,15 @@
                     <abbr class="timeago">${timeAgo(view.created)}</abbr>
                     ⋅
                     ${view.views} 阅读
+
                     <div style="display: inline;margin-left: 15px">
-                       <#if view.tagsArray??><i>标签：</i></#if>
-                        <#list  view.tagsArray as tag>
-                            <a class="tag-link" href="${base}/tag/${tag}">${tag}</a>
-                        </#list>
+                    <#list view.tagsArray as tag>
+                        <span>
+                            <a class="label label-default" href="${base}/tag/${tag}/">${tag}</a>
+                        </span>
+                    </#list>
                     </div>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -57,6 +39,24 @@
                     ${view.content}
                 </div>
             </div>
+        <#--<div class="row">-->
+        <#--<div class="col-sm-6">-->
+        <#--<div class="like-favor">-->
+        <#--<a class="label label-info" style="margin-right: 20px" href="javascript:void(0);" data-id="${view.id}" rel="favor">-->
+        <#--<i class="fa fa-heart"></i> 喜欢 <span style="padding-right: 5px">|</span><span-->
+        <#--id="favors">${view.favors}</span>-->
+        <#--</a>-->
+        <#--<a class="label label-success" href="javascript:void(0);" data-id="${view.id}" rel="favor">-->
+        <#--<i class="fa fa-heart"></i> 赞赏支持-->
+        <#--</a>-->
+        <#--</div>-->
+        <#--</div>-->
+        <#--<div class="col-sm-6">-->
+        <#--<div class="social-share" style="float: right;margin-bottom: -10px"-->
+        <#--data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>-->
+        <#--</div>-->
+        <#--</div>-->
+
             <div class="like-favor">
                 <a class="label label-info" style="margin-right: 20px" href="javascript:void(0);" data-id="${view.id}"
                    rel="favor">
@@ -72,6 +72,7 @@
                      data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
                 <div class="clearfix"></div>
             </div>
+
         </div>
         <#if (pre?? || next??)>
         <div class="panel panel-default padding-md" style="margin-top: -21px">
@@ -79,13 +80,13 @@
                 <div class="col-sm-6 page-prev text-nowrap">
                     <#if pre??>
                         <b>上一篇:</b>
-                        <a href="${base}/columnview/${columnlist.id}/${pre.url}">${pre.title}</a>
+                        <a href="${base}/view/${pre.id}">${pre.title}</a>
                     </#if>
                 </div>
                 <div class="col-sm-6 page-next text-nowrap">
                     <#if next??>
                         <b>下一篇:</b>
-                        <a href="${base}/columnview/${columnlist.id}/${next.url}">${next.title}</a>
+                        <a href="${base}/view/${next.id}">${next.title}</a>
                     </#if>
                 </div>
             </div>
@@ -128,29 +129,50 @@
         </div>
         <!-- /view show -->
     </div>
-    <div class="col-xs-12 col-md-2 right-box hidden-xs hidden-sm">
-        <div class="right-title">
-            <a href="javascript:void(0);">
-                <span id="col-title"><i class="fa fa-th-list"></i> 分类导航</span>
-            </a>
-        </div>
-        <div class="side-right-box">
-            <div class="side-right-list">
-                <ul>
-                    <#list classify_column_map?keys as key>
-                        <li class="item-box"><a href="javascript:void(0);"> ${key}</a>
-                        <ul class="hidden-item">
-                            <#list classify_column_map[key] as row >
-                                <li><a title="${row.comment}" href="/columnview/${row.id}"><img
-                                        class="img-circle img-wh" src="${row.logo}"/>${row.colname}</a></li>
-                            </#list>
-                        </ul>
-                    </li>
-                    </#list>
-                </ul>
+    <div class="col-xs-12 col-md-4 side-right hidden-xs hidden-sm">
+        <div class="panel panel-default corner-radius panel-user-infos">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user-circle"></i> 用户信息</h3>
+            </div>
+            <div class="panel-body list-body">
+                <div class="right-user ">
+                    <a style="width: 75%;display: inline-block;padding-left: 10px "
+                       href="${base}/users/${view.author.id}">
+                           <@showAva view.author.avatar "img-circle" />
+                        <span class="midspan">${view.author.name}</span>
+                    </a>
+
+                    <a class="btn act_follow" href="javascript:void(0);" data-id="${view.author.id}" rel="follow"><i
+                            class="icon icon-user-follow"></i> 关注</a>
+
+                </div>
+                <div class="about-user-datas">
+                    <ul>
+                        <li><strong>${view.author.posts}</strong><span>发布</span></li>
+                        <li><strong>${view.author.comments}</strong><span>评论</span></li>
+                        <li><strong>${view.author.favors}</strong><span>收藏</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
+        <#if classifys?size != 0>
+        <div class="panel panel-default corner-radius panel-user-classify" id="classifysid">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user-circle"></i> 个人分类</h3>
+            </div>
+            <div class="panel-body list-body">
+                <div class="user-classify-data row">
+                        <#list classifys as row>
+                            <div class="col-xs-6 atag">
+                                <a href="/classify/${view.author.id}/${row.classname}">${row.classname}</a>
+                            </div>
+                        </#list>
+                </div>
+            </div>
+        </div>
+        </#if>
 
+        <#include "/default/inc/right.ftl"/>
     </div>
 </div>
 
@@ -176,14 +198,6 @@
 </script>
 
 <script type="text/javascript">
-    $(function () {
-        $(".side-right-list > ul > li").hover(function () {
-            $(this).children("ul").show();
-        }, function () {
-            $(this).children("ul").hide();
-        })
-    })
-
     function goto(pid, user) {
         document.getElementById('chat_text').scrollIntoView();
         $('#chat_text').focus();

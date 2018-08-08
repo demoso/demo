@@ -23,11 +23,10 @@
                 ${view.views} 阅读
 
                     <div style="display: inline;margin-left: 15px">
-                    <#list view.tagsArray as tag>
-                        <span>
-                            <a class="label label-default" href="${base}/tag/${tag}/">${tag}</a>
-                        </span>
-                    </#list>
+                        <#if view.tagsArray??><i>标签：</i></#if>
+                        <#list  view.tagsArray as tag>
+                            <a class="tag-link" href="${base}/tag/${tag}">${tag}</a>
+                        </#list>
                     </div>
 
                 </div>
@@ -39,11 +38,14 @@
                 ${view.content}
                 </div>
             </div>
-
             <div class="like-favor">
-                <a class="label label-info" href="javascript:void(0);" data-id="${view.id}" rel="favor">
-                    <i class="fa fa-heart"></i> 喜欢 <span style="padding-right: 5px">|</span><span
+                <a class="label label-info" style="margin-right: 20px" href="javascript:void(0);" data-id="${view.id}"
+                   rel="favor">
+                    <i class="fa fa-star-o"></i> 收藏 <span style="padding-right: 5px">|</span><span
                         id="favors">${view.favors}</span>
+                </a>
+                <a class="label label-danger" href="javascript:void(0);">
+                    <i class="fa fa-heart"></i> 赞赏支持
                 </a>
             </div>
             <div class="panel-footer operate">
@@ -51,7 +53,9 @@
                      data-sites="weibo, wechat, facebook, twitter, google, qzone, qq"></div>
                 <div class="clearfix"></div>
             </div>
+
         </div>
+        <#if (pre?? || next??)>
         <div class="panel panel-default padding-md" style="margin-top: -21px">
             <div class="panel-body">
                 <div class="col-sm-6 page-prev text-nowrap">
@@ -68,7 +72,7 @@
                 </div>
             </div>
         </div>
-
+        </#if>
         <!-- Comments -->
         <div id="chat" class="chats shadow-box">
             <div class="chat_other">

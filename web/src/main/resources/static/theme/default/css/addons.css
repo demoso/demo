@@ -926,15 +926,18 @@ li a .img-wh {
     border-radius: 5px;
 }
 
-.meta .label-default {
-    background-color: #F0F0F0;
-    font-weight: normal;
-    border-radius: 10px;
+.meta a:hover {
+    color: red;
 }
 
 .like-favor {
-    margin-bottom: 18px;
     text-align: center; /*让div内部文字居中*/
-    font-weight: bold;
-    font-size: 25px;
+    font-size: 23px;
+    padding: 15px 0 10px 0;
+}
+
+.text-nowrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

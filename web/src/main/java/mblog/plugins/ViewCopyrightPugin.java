@@ -1,7 +1,6 @@
 package mblog.plugins;
 
 import mblog.core.hook.interceptor.desk.ChannelControllerHook;
-import mblog.modules.blog.data.PostVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,14 +20,14 @@ public class ViewCopyrightPugin implements ChannelControllerHook.ChannelControll
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, HandlerMethod handler, ModelAndView modelAndView) throws Exception {
-        PostVO ret = (PostVO) modelAndView.getModelMap().get("view");
-        if (ret != null) {
-            String content = ret.getContent();
-            if (!content.contains("本文归作者所有，未经作者允许，不得转载")) {
-                content += "<br/>注意：本文归作者所有，未经作者允许，不得转载";
-                ret.setContent(content);
-            }
-        }
+//        PostVO ret = (PostVO) modelAndView.getModelMap().get("view");
+//        if (ret != null) {
+//            String content = ret.getContent();
+//            if (!content.contains("本文归作者所有，未经作者允许，不得转载")) {
+//                content += "<br/>注意：本文归作者所有，未经作者允许，不得转载";
+//                ret.setContent(content);
+//            }
+//        }
     }
 
     @Override

@@ -420,7 +420,7 @@ abbr[data-original-title], abbr[title] {
 -------------------------------------------------- */
 /*滚动条宽度*/
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 17px;
 }
 
 /* 轨道样式 */
@@ -974,10 +974,6 @@ abbr[data-original-title], abbr[title] {
     line-height: 135%;
     margin-bottom: 12px;
     font-weight: normal;
-}
-
-.topics-show .meta .author {
-    color: #737373;
 }
 
 .topics-show .entry-content {
