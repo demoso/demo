@@ -119,7 +119,7 @@
             var id = $(this).attr('data-id');
             var title = $(this).attr('data-title');
             $(this).css("background-color", "yellow");
-            $("#tab-list").append('<tr><td><input class="tab-input" type="text" name="url" value=' + id + '></td><td><input class="tab-input" type="text" name="title" value=' + title + ' ></td><td><select name="csstype"><option  value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
+            $("#tab-list").append('<tr><td><input class="tab-input" type="text" name="url" value=' + id + '></td><td><input class="tab-input" type="text" name="title" value=\"' + title + '\" ></td><td><select name="csstype"><option  value="H3" selected>H3</option><option value="H2">H2</option></select></td><td><input type ="button" value="上" class="up act-button"><input type ="button" value="下" class="down act-button"><input type ="button" value="删" class="delete act-button"><input type ="button" value="加" class="add act-button"></td></tr>')
         });
 
         $("#submit-but").live('click', function () {

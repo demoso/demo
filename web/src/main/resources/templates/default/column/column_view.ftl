@@ -18,7 +18,7 @@
                 <#if row.csstype=='H3'>
                    <a target="_top" <#if id=row.url>
                       style="font-weight: bold;  color: rgb(255, 255, 255);  background-color: #0C9A9A;" </#if>
-                      title="${row.title}" href="/columnview/${row.columnid}/${row.url}">${row.title}</a>
+                      title="${row.title}" href="/columnview/${row.columnid}/${row.url}">${row.title?html}</a>
                 <#else>
                     <h2 class="leftcolumn-h2"><span class="left-h2">${row.title}</span></h2>
                 </#if>

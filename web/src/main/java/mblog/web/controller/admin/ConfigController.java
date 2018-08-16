@@ -80,6 +80,7 @@ public class ConfigController extends BaseController {
 	public @ResponseBody Data flushFiledia() {
 		contextStartup.resetSiteConfig(false);
 		contextStartup.resetChannels();
+		contextStartup.bandMap();
 		return Data.success("操作成功", Data.NOOP);
 	}
 

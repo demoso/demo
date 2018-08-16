@@ -62,9 +62,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="classify" class="col-sm-2 control-label">专栏分类</label>
+                            <label for="classid" class="col-sm-2 control-label">专栏分类</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="classify" data-required>
+                                <select class="form-control" name="classid" data-required>
                                     <option value="">选择分类</option>
                                     <#list classifys as row>
                                        <option value="${row.id}" <#if (columnlist.classid == row.id)>

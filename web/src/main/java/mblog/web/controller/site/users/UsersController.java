@@ -36,8 +36,8 @@ public class UsersController extends BaseController {
 	private UserService userService;
 	@Autowired
 	private ClassifyService classifyService;
-	
-	@RequestMapping("/users/{uid}")
+
+	@RequestMapping(value = {"/users/{uid}", "/ta/{uid}"})
 	public String home(@PathVariable Long uid, HttpServletRequest request, ModelMap model) {
 		UserVO user = userService.get(uid);
 		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);

@@ -40,6 +40,9 @@
                         })();
                     </script>
                 </li>
+                <li>
+                    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=60870126" charset="UTF-8"></script>
+                </li>
             </ul>
             <div class="copyright">
 				<span>${site_copyright}. ${site_icp}</span>
