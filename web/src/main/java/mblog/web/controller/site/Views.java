@@ -26,6 +26,7 @@ public interface Views {
 	String FORGOT_RESET = "/auth/forgot_reset";
 
 	String INDEX = "/index";
+    String NOT_FOUND = "/error/page404";
 
 	String USER_FEEDS = "/user/method_feeds";
 	String USER_POSTS = "/user/method_posts";

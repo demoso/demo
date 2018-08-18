@@ -403,7 +403,7 @@ input.tab-input {
     background-color: #f9f2f4;
     border-radius: 3px;
     font-size: 13px;
-    color: #003E3E;
+    color: #00CACA;
     font-family: Consolas, "Courier New", Courier, monospace;
 }
 
@@ -447,7 +447,7 @@ input.tab-input {
 }
 
 .demoso-content-view a {
-    color: #007979;
+    color: #00CACA;
     text-decoration: underline;
     word-break: break-all;
 }
@@ -940,4 +940,26 @@ li a .img-wh {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.show-404 {
+    background-color: #fff;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.show-404 .ava {
+    margin-left: 150px;
+    float: left;
+}
+
+.show-404 .ava img {
+    height: 300px;
+    margin-right: 50px;
+}
+
+.show-404 .page-error {
+    padding: 10px;
+    margin-left: 10px;
+    height: 300px;
 }

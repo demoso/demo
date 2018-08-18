@@ -217,7 +217,9 @@ public class ColumnController extends BaseController {
     @RequestMapping("/columnview/{columnid}/{id}")
     public String columnview(@PathVariable int columnid, @PathVariable int id, ModelMap model) {
         PostVO view = postService.get(id);
-        Assert.notNull(view, "该文章已被删除");
+        if (view == null) {
+            return "redirect:/notfound";
+        }
 
         Columnlist columnlist = columnService.findOne(columnid);
         Assert.notNull(columnlist, "该专栏已被删除");
@@ -262,7 +264,9 @@ public class ColumnController extends BaseController {
         Assert.isTrue(!columnlistAttrList.isEmpty(), "该专栏暂时无文章");
         long id = columnlistAttrList.get(0).getUrl();
         PostVO view = postService.get(id);
-        Assert.notNull(view, "该文章已被删除");
+        if (view == null) {
+            return "redirect:/notfound";
+        }
 
         Columnlist columnlist = columnService.findOne(columnid);
         Assert.notNull(columnlist, "该专栏已被删除");

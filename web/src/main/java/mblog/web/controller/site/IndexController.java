@@ -28,10 +28,15 @@ public class IndexController extends BaseController{
 	ColumnService columnService;
 	@Autowired
 	ClassifyService classifyService;
-	
-	@RequestMapping(value= {"/", "/index"})
+
+	@RequestMapping(value = {"/", "/index", "*"})
     public String root() {
 		return view(Views.INDEX);
+	}
+
+	@RequestMapping(value = {"/notfound"})
+	public String error404() {
+		return view(Views.NOT_FOUND);
 	}
 
 }

@@ -25,7 +25,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,8 +66,9 @@ public class ChannelController extends BaseController {
 	@RequestMapping(value = {"/view/{id}", "/taview/{id}"})
 	public String view(@PathVariable Long id, ModelMap model) {
 		PostVO view = postService.get(id);
-
-		Assert.notNull(view, "该文章已被删除");
+		if (view == null) {
+			return "redirect:/notfound";
+		}
 		List<Classify> classifys = classifyService.findByAuthorIdOrderByCreatedDesc(view.getAuthorId());
 		List<Object[]> postList = postService.queryByAuthorIdOrderByCreatedDesc(view.getAuthorId());
 		Post pre = null;
