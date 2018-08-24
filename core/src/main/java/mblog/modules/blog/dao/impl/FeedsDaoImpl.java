@@ -2,15 +2,15 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.blog.dao.impl;
 
-import mblog.modules.blog.data.FeedsVO;
 import mblog.modules.blog.dao.custom.FeedsDaoCustom;
+import mblog.modules.blog.data.FeedsVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

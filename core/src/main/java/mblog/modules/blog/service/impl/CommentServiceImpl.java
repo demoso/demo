@@ -2,20 +2,20 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.blog.service.impl;
 
+import mblog.modules.blog.dao.CommentDao;
 import mblog.modules.blog.data.CommentVO;
 import mblog.modules.blog.data.PostVO;
-import mblog.modules.user.data.UserVO;
-import mblog.modules.blog.dao.CommentDao;
 import mblog.modules.blog.entity.Comment;
 import mblog.modules.blog.service.CommentService;
 import mblog.modules.blog.service.PostService;
+import mblog.modules.user.data.UserVO;
 import mblog.modules.user.service.UserEventService;
 import mblog.modules.user.service.UserService;
 import mblog.modules.utils.BeanMapUtils;

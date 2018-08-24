@@ -2,20 +2,12 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.web.formatter;
-
-import java.io.IOException;
-import java.lang.reflect.AnnotatedElement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,6 +17,13 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.lang.reflect.AnnotatedElement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author langhsu

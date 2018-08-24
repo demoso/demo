@@ -2,8 +2,8 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
@@ -12,10 +12,10 @@ package mblog.modules.code.entity;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
-import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.NumericField;
+import org.hibernate.search.annotations.SortableField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,9 +29,12 @@ import java.util.Date;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Indexed(index = "codes")
 public class CodePO implements Serializable {
+
+    private static final long serialVersionUID = -1104359297890424954L;
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @DocumentId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SortableField
+    @NumericField
     private long id;
 
 

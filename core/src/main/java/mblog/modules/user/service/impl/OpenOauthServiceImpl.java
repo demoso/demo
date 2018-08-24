@@ -2,27 +2,26 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.user.service.impl;
 
 import mblog.base.utils.MD5;
-import mblog.modules.user.data.UserVO;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import mblog.modules.user.data.OpenOauthVO;
 import mblog.modules.user.dao.OpenOauthDao;
 import mblog.modules.user.dao.UserDao;
+import mblog.modules.user.data.OpenOauthVO;
+import mblog.modules.user.data.UserVO;
 import mblog.modules.user.entity.OpenOauth;
 import mblog.modules.user.entity.User;
 import mblog.modules.user.service.OpenOauthService;
 import mblog.modules.utils.BeanMapUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 第三方登录授权管理

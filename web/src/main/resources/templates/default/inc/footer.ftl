@@ -50,7 +50,7 @@
         </div>
         <div class="footer-col footer-col-sns hidden-xs hidden-sm">
             <div class="footer-sns">
-                <span>Powered By <a href="http://mtons.com/?copyright" target="_blank">Demoso</a></span>
+                <span>Powered By <a href="http://www.demoso.net/?copyright" target="_blank">Demoso</a></span>
             </div>
         </div>
     </div>

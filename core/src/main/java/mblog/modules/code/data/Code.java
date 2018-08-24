@@ -2,8 +2,8 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
@@ -21,8 +21,7 @@ import java.util.Date;
  * @author langhsu
  */
 public class Code implements Serializable {
-    private static final long serialVersionUID = -1144627551517707139L;
-
+    private static final long serialVersionUID = 3470834934101993763L;
     private long id;
     private String title;
     private String summary;

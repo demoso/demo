@@ -2,13 +2,15 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.shiro.authc;
 
+import mblog.base.lang.Consts;
+import mblog.modules.user.data.AccountProfile;
 import mblog.modules.user.service.UserService;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.mgt.SubjectFactory;
@@ -16,9 +18,6 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.subject.SubjectContext;
 import org.apache.shiro.web.subject.WebSubjectContext;
-
-import mblog.base.lang.Consts;
-import mblog.modules.user.data.AccountProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AccountSubjectFactory implements SubjectFactory {

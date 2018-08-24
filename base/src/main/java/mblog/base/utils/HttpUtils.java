@@ -2,15 +2,12 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.base.utils;
-
-import java.io.IOException;
-import java.util.Map;
 
 import mblog.base.lang.MtonsException;
 import org.apache.commons.httpclient.HttpClient;
@@ -18,6 +15,9 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * 

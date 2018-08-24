@@ -2,17 +2,17 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.blog.dao.impl;
 
-import mblog.modules.blog.data.PostVO;
-import mblog.modules.utils.BeanMapUtils;
 import mblog.modules.blog.dao.custom.PostDaoCustom;
+import mblog.modules.blog.data.PostVO;
 import mblog.modules.blog.entity.Post;
+import mblog.modules.utils.BeanMapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.search.Sort;

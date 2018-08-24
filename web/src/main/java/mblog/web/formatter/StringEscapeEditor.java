@@ -2,16 +2,13 @@
 +--------------------------------------------------------------------------
 |   Mtons [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 +---------------------------------------------------------------------------
 */
 package mblog.web.formatter;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
-import org.springframework.web.util.HtmlUtils;
-import org.springframework.web.util.JavaScriptUtils;
 
 import java.beans.PropertyEditorSupport;
 import java.util.regex.Pattern;

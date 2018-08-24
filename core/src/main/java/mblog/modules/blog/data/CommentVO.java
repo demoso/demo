@@ -2,19 +2,19 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.blog.data;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import com.alibaba.fastjson.annotation.JSONField;
 import mblog.modules.blog.entity.Comment;
 import mblog.modules.user.data.UserVO;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author langhsu

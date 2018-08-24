@@ -2,16 +2,16 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
 package mblog.modules.user.service.impl;
 
 import mblog.base.lang.MtonsException;
-import mblog.modules.user.data.UserVO;
 import mblog.modules.user.dao.FollowDao;
+import mblog.modules.user.data.UserVO;
 import mblog.modules.user.entity.Follow;
 import mblog.modules.user.entity.User;
 import mblog.modules.user.service.FollowService;

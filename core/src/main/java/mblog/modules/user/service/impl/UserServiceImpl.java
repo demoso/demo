@@ -2,8 +2,8 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
@@ -13,7 +13,6 @@ import mblog.base.lang.EntityStatus;
 import mblog.base.lang.MtonsException;
 import mblog.base.utils.MD5;
 import mblog.modules.authc.dao.RoleDao;
-import mblog.modules.authc.entity.Role;
 import mblog.modules.user.dao.UserDao;
 import mblog.modules.user.data.AccountProfile;
 import mblog.modules.user.data.BadgesCount;

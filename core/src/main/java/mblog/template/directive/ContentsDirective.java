@@ -24,7 +24,7 @@ import java.util.Set;
  * 文章内容查询
  *
  * 示例：
- * 	请求：http://mtons.com/index?ord=newest&pn=2
+ * 	请求：http://demoso.net/index?ord=newest&pn=2
  *  使用：@contents group=x pn=pn ord=ord
  *
  * @author langhsu

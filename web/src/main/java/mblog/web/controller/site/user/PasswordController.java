@@ -2,8 +2,8 @@
 +--------------------------------------------------------------------------
 |   Mblog [#RELEASE_VERSION#]
 |   ========================================
-|   Copyright (c) 2014, 2015 mtons. All Rights Reserved
-|   http://www.mtons.com
+|   Copyright (c) 2014, 2015 Demoso. All Rights Reserved
+|   http://www.demoso.net
 |
 +---------------------------------------------------------------------------
 */
@@ -11,16 +11,14 @@ package mblog.web.controller.site.user;
 
 import mblog.base.data.Data;
 import mblog.modules.user.data.AccountProfile;
-
+import mblog.modules.user.service.UserService;
+import mblog.web.controller.BaseController;
+import mblog.web.controller.site.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import mblog.modules.user.service.UserService;
-import mblog.web.controller.BaseController;
-import mblog.web.controller.site.Views;
 
 /**
  * @author langhsu
